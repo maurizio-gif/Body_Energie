@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Energie · Dashboard Commerciale</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--or:#e8720c;--or2:#fdf0e6;--bk:#1a1a1a;--g1:#444;--g2:#777;--g3:#aaa;--g4:#e4e4e4;--bg:#f6f6f4;--wh:#fff;--gn:#00a46a;--re:#d42b2b;--ye:#df7800;--bl:#1a6fd4;--pu:#7130d6;--bd:#e0e0e0}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--bk);font-size:14px;line-height:1.5;overflow-x:hidden}
+nav{background:var(--wh);border-bottom:3px solid var(--or);padding:0 16px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.nav-logo{display:flex;align-items:center;gap:0}.nav-logo img{height:36px;width:auto;display:block}
+.nav-be{background:var(--or);color:#fff;width:32px;height:32px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+.nav-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--g2);letter-spacing:.06em;text-transform:uppercase}
+/* ── WEEK NAV MENU (scalable) ── */
+.wnav{background:var(--bk);border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:56px;z-index:99}
+.wnav-inner{padding:0 16px;display:flex;align-items:stretch;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:720px;margin:0 auto}
+.wnav-inner::-webkit-scrollbar{display:none}
+/* Month group */
+.wnav-month{display:flex;align-items:stretch;flex-shrink:0;border-right:1px solid rgba(255,255,255,.08)}
+.wnav-month:last-child{border-right:none}
+.wnav-month-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:0 10px 0 0;display:flex;align-items:center;white-space:nowrap;flex-shrink:0}
+.wnav-weeks{display:flex;align-items:stretch;gap:2px;padding:6px 10px 6px 0}
+/* Each week pill */
+.nwm-link{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:5px 11px;border-radius:3px;white-space:nowrap;flex-shrink:0;color:rgba(255,255,255,.55);border:1px solid transparent;transition:background .15s,color .15s,border-color .15s;display:flex;align-items:center;gap:5px;line-height:1}
+.nwm-link:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.15)}
+.nwm-link.active{background:var(--or);color:#fff;border-color:var(--or)}
+/* Status dot on each week pill */
+.nwm-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.nwm-dot.ok{background:#4eca8b}
+.nwm-dot.warn{background:#f6c343}
+.nwm-dot.bad{background:#f56565}
+.nwm-dot.upcoming{background:rgba(255,255,255,.25)}
+.hero{background:var(--or);padding:24px 16px 20px;overflow:hidden;position:relative}
+.hero::after{content:'CRM';position:absolute;right:-6px;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:100px;color:rgba(255,255,255,.07);line-height:1;pointer-events:none}
+.hero-tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:8px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:34px;line-height:1;color:#fff;text-transform:uppercase;margin-bottom:6px}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border-radius:3px;padding:5px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#4eca8b;flex-shrink:0}
+main{padding:16px;display:flex;flex-direction:column;gap:16px;max-width:720px;margin:0 auto}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sh h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.sh::after{content:'';flex:1;height:2px;background:var(--bd)}
+.sh-pill{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:2px;background:var(--or2);color:var(--or);border:1px solid rgba(232,114,12,.2);white-space:nowrap;flex-shrink:0}
+.card{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:16px}
+.card-t{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.alert{border-radius:4px;padding:11px 13px;font-size:12px;line-height:1.6;margin-top:10px}
+.ao{background:var(--or2);border:1px solid rgba(232,114,12,.2)}.ag{background:#e6f6ef;border:1px solid rgba(0,164,106,.2)}.ar{background:#fdeaea;border:1px solid rgba(212,43,43,.2)}.ab{background:#e4eefb;border:1px solid rgba(26,111,212,.2)}
+.alert-l{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ao .alert-l{color:var(--or)}.ag .alert-l{color:var(--gn)}.ar .alert-l{color:var(--re)}.ab .alert-l{color:var(--bl)}
+/* GLOSSARY */
+.gloss{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.gi{display:flex;align-items:flex-start;gap:8px;background:var(--bg);border-radius:4px;padding:8px 10px}
+.gi-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.gi-text{font-size:11px;color:var(--g1);line-height:1.4}
+.gi-text strong{color:var(--bk);display:block;font-size:12px;margin-bottom:1px}
+/* KPI TOTALI */
+.tot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tot{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px;border-top:4px solid var(--bd);text-align:center}
+.tot.tor{border-top-color:var(--or)}.tot.tgn{border-top-color:var(--gn)}.tot.tye{border-top-color:var(--ye)}.tot.tre{border-top-color:var(--re)}.tot.tpu{border-top-color:var(--pu)}.tot.tbl{border-top-color:var(--bl)}
+.tot-l{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:4px}
+.tot-v{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;line-height:1}
+.tor .tot-v{color:var(--or)}.tgn .tot-v{color:var(--gn)}.tre .tot-v{color:var(--re)}
+.tot-s{font-size:11px;color:var(--g3);margin-top:3px}
+/* TABELLA SETTIMANE — desktop grid, mobile cards */
+.wt{background:var(--wh);border:1px solid var(--bd);border-radius:6px;overflow:hidden}
+/* DESKTOP: tabella a 5 colonne */
+.wt-head{display:grid;grid-template-columns:80px 1fr 1fr 1fr 1fr;background:var(--bk);padding:8px 14px;gap:6px}
+.wt-hc{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center}
+.wt-hc:first-child{text-align:left}
+.wt-row{display:grid;grid-template-columns:80px 1fr 1fr 1fr 1fr;padding:12px 14px;gap:6px;border-bottom:1px solid var(--bd);align-items:center}
+.wt-row:last-child{border:none}
+.wt-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;color:var(--bk)}
+.wt-period{font-size:10px;color:var(--g3);margin-top:1px}
+.wt-cell{text-align:center}
+.wt-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;line-height:1}
+.wt-sub{font-size:10px;color:var(--g3);margin-top:1px}
+.delta{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;padding:1px 4px;border-radius:2px;margin-top:2px}
+.d-up{background:#e6f6ef;color:var(--gn)}.d-dn{background:#fdeaea;color:var(--re)}.d-eq{background:var(--g4);color:var(--g2)}
+/* MOBILE: card verticale per ogni settimana */
+.wt-mobile{display:none;flex-direction:column;gap:0}
+.wtm-card{padding:14px 16px;border-bottom:1px solid var(--bd);border-left:4px solid var(--bd)}
+.wtm-card:last-child{border-bottom:none}
+.wtm-card.wc1{border-left-color:var(--or)}.wtm-card.wc2{border-left-color:var(--gn)}.wtm-card.wc3{border-left-color:var(--re)}
+.wtm-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.wtm-label{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;color:var(--bk)}
+.wtm-period{font-size:11px;color:var(--g2)}
+.wtm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wtm-kpi{background:var(--bg);border-radius:4px;padding:8px 10px}
+.wtm-kpi-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--g3);margin-bottom:4px}
+.wtm-kpi-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:26px;line-height:1}
+.wtm-kpi-delta{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;margin-top:3px}
+@media(max-width:540px){
+  .wt .wt-head,.wt .wt-row{display:none}
+  .wt-mobile{display:flex}
+}
+/* TREND */
+.trend-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tr-week{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;width:22px;flex-shrink:0;color:var(--g2)}
+.tr-wrap{flex:1;height:26px;background:var(--g4);border-radius:3px;overflow:hidden;position:relative}
+.tr-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px}
+.tr-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;color:#fff;white-space:nowrap}
+.tr-count{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;width:28px;text-align:right;flex-shrink:0}
+/* TEAM */
+.tc{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px}
+.tc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;color:#fff;flex-shrink:0}
+.tc-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.tc-totale{font-size:11px;color:var(--g2);margin-top:2px}
+.tc-voto{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;line-height:1}
+.tc-voto-l{font-size:9px;color:var(--g3);text-align:right;text-transform:uppercase;letter-spacing:.06em}
+.tc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.ts{background:var(--bg);border-radius:4px;padding:8px 4px;text-align:center}
+.ts-v{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;line-height:1}
+.ts-l{font-size:9px;color:var(--g3);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.tc-verdict{font-size:12px;color:var(--g1);line-height:1.6;padding:10px;background:var(--bg);border-radius:4px;border-left:3px solid var(--bd)}
+/* NOTE */
+.nq-bar{height:18px;border-radius:4px;overflow:hidden;display:flex;gap:1px;margin-bottom:8px}
+.nq-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;color:#fff}
+/* WEEK NAV */
+.wn{display:flex;align-items:center;text-decoration:none;background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px 16px;gap:12px;transition:box-shadow .2s,border-color .2s}
+.wn:hover{box-shadow:0 2px 8px rgba(0,0,0,.1);border-color:var(--or)}
+.wn-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:30px;width:38px;flex-shrink:0;line-height:1}
+.wn-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--bk);margin-bottom:4px}
+.wn-meta{display:flex;gap:7px;flex-wrap:wrap}
+.wt-tag{font-size:10px;color:var(--g2);background:var(--bg);padding:2px 6px;border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.wt-tag.tg{background:#e6f6ef;color:var(--gn)}.wt-tag.tr{background:#fdeaea;color:var(--re)}.wt-tag.ty{background:var(--or2);color:var(--or)}
+.wn-arrow{font-size:18px;color:var(--g3);flex-shrink:0}
+/* HOWTO */
+.howto{background:var(--bk);border-radius:6px;padding:16px}
+.howto-t{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.04em;color:var(--or);margin-bottom:12px}
+.hs{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.hs:last-child{margin-bottom:0}
+.hs-n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--or);flex-shrink:0;line-height:1.1}
+.hs-text{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6}
+.hs-text strong{color:#fff}
+/* URGENTI */
+.urg-item{background:var(--bg);border-radius:4px;padding:9px 11px;border-left:3px solid var(--bd);font-size:12px;color:var(--g1);line-height:1.5;margin-bottom:6px}
+.urg-item:last-child{margin-bottom:0}
+.urg-item.u-re{border-left-color:var(--re)}.urg-item.u-or{border-left-color:var(--or)}.urg-item.u-bl{border-left-color:var(--bl)}
+footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-top:8px}
+
+
+/* FOOTER */
+footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-top:8px}
+.footer-inner{display:flex;flex-direction:column;gap:14px}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-be img{height:28px;width:auto;filter:brightness(0) invert(1);opacity:.8}
+.footer-divider{width:1px;height:32px;background:rgba(255,255,255,.1);flex-shrink:0}
+.footer-r2d{display:flex;align-items:center;gap:10px}
+.footer-r2d img{height:28px;width:auto;opacity:.75}
+.footer-credit{text-align:right}
+.footer-credit-main{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.75)}
+.footer-credit-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+.footer-bottom{font-size:10px;color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.06);padding-top:10px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie">
+  </div>
+  <div class="nav-label">Dashboard Commerciale</div>
+</nav>
+<div class="wnav">
+  <div class="wnav-inner">
+
+    <!-- ═══ APRILE 2026 ═══ -->
+    <div class="wnav-month">
+      <div class="wnav-month-label">Apr</div>
+      <div class="wnav-weeks">
+        <a href="be-w1.html" class="nwm-link">
+          <span class="nwm-dot ok"></span>S1
+        </a>
+        <a href="be-w2.html" class="nwm-link">
+          <span class="nwm-dot ok"></span>S2
+        </a>
+        <a href="be-w3.html" class="nwm-link">
+          <span class="nwm-dot bad"></span>S3
+        </a>
+        <!-- Aggiungi qui le settimane successive:
+        <a href="be-w4.html" class="nwm-link">
+          <span class="nwm-dot upcoming"></span>S4
+        </a>
+        -->
+      </div>
+    </div>
+
+    <!-- ═══ MAGGIO 2026 (esempio — decommenta quando pronto) ═══
+    <div class="wnav-month">
+      <div class="wnav-month-label">Mag</div>
+      <div class="wnav-weeks">
+        <a href="be-m1.html" class="nwm-link">
+          <span class="nwm-dot upcoming"></span>S1
+        </a>
+        <a href="be-m2.html" class="nwm-link">
+          <span class="nwm-dot upcoming"></span>S2
+        </a>
+      </div>
+    </div>
+    ═══ -->
+
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">📊 Dashboard Riunioni Commerciali · Aprile 2026</div>
+  <h1>REPORT<br>COMMERCIALE</h1>
+  <div class="hero-sub">Monitoraggio settimanale dei contatti, delle conversioni e del lavoro del team. Schema Mercoledì–Martedì.</div>
+  <div class="hero-badge">Aggiornato al 21 Aprile 2026 · 3 settimane</div>
+</div>
+
+<main>
+
+  <!-- COME SI USA -->
+  <div class="howto">
+    <div class="howto-t">📖 Come si usa questa dashboard</div>
+    <div class="hs"><div class="hs-n">1</div><div class="hs-text"><strong>Guarda prima i totali</strong> — ti dicono subito se il mese va bene o male: quante persone si sono iscritte e quante sono ancora in ballo.</div></div>
+    <div class="hs"><div class="hs-n">2</div><div class="hs-text"><strong>Controlla la tabella settimanale</strong> — vedi se i numeri migliorano o peggiorano settimana dopo settimana. Le frecce ↑↓ rendono il confronto immediato.</div></div>
+    <div class="hs"><div class="hs-n">3</div><div class="hs-text"><strong>Usa le schede del team</strong> come punto di partenza per la riunione — ogni consulente ha un voto e un commento diretto e onesto.</div></div>
+    <div class="hs"><div class="hs-n">4</div><div class="hs-text"><strong>Clicca su una settimana</strong> per vedere tutti i dettagli: lead per lead, nota per nota, cosa ha funzionato e cosa no.</div></div>
+  </div>
+
+  <!-- GLOSSARIO -->
+  <div class="card">
+    <div class="card-t">📚 Guida ai Termini</div>
+    <div style="font-size:12px;color:var(--g1);line-height:1.6;margin-bottom:10px">Nel CRM ogni contatto riceve uno <strong>stato</strong> che indica dove si trova nel processo:</div>
+    <div class="gloss">
+      <div class="gi"><div class="gi-dot" style="background:var(--gn)"></div><div class="gi-text"><strong>Iscritto</strong>Obiettivo raggiunto ✓</div></div>
+      <div class="gi"><div class="gi-dot" style="background:var(--or)"></div><div class="gi-text"><strong>Appuntamento Preso</strong>Verrà a visitare il centro</div></div>
+      <div class="gi"><div class="gi-dot" style="background:var(--pu)"></div><div class="gi-text"><strong>Prova Attivata</strong>Sta facendo la settimana di prova</div></div>
+      <div class="gi"><div class="gi-dot" style="background:var(--re)"></div><div class="gi-text"><strong>Richiamare</strong>Da ricontattare — serve follow-up</div></div>
+      <div class="gi"><div class="gi-dot" style="background:var(--bl)"></div><div class="gi-text"><strong>Da Rich. in Futuro</strong>Interessato ma con impedimento temporaneo</div></div>
+      <div class="gi"><div class="gi-dot" style="background:var(--g3)"></div><div class="gi-text"><strong>Perso</strong>Non si iscriverà (almeno per ora)</div></div>
+    </div>
+    <div class="alert ab">
+      <div class="alert-l">💡 Cos'è la Pipeline</div>
+      <strong>Pipeline attiva</strong> = Appuntamenti Presi + Prove Attivate. Sono i lead più caldi — se seguiti bene, la maggior parte si iscrive nei giorni successivi.
+    </div>
+  </div>
+
+  <!-- TOTALI APRILE -->
+  <div>
+    <div class="sh"><h2>Aprile in Numeri</h2><div class="sh-pill">1–21 Apr · 3 settimane</div></div>
+    <div class="tot-grid">
+      <div class="tot tor">
+        <div class="tot-l">Contatti Totali</div>
+        <div class="tot-v">98</div>
+        <div class="tot-s">lead validi analizzati</div>
+      </div>
+      <div class="tot tgn">
+        <div class="tot-l">Iscrizioni</div>
+        <div class="tot-v">7</div>
+        <div class="tot-s">= 7.1% dei contatti</div>
+      </div>
+      <div class="tot" style="border-top-color:var(--ye)">
+        <div class="tot-l">Pipeline Attiva</div>
+        <div class="tot-v">22</div>
+        <div class="tot-s">app + prove in corso</div>
+      </div>
+      <div class="tot tre">
+        <div class="tot-l">Da Richiamare</div>
+        <div class="tot-v">17</div>
+        <div class="tot-s">seguire questa settimana</div>
+      </div>
+      <div class="tot" style="border-top-color:var(--pu)">
+        <div class="tot-l">Persi</div>
+        <div class="tot-v">29</div>
+        <div class="tot-s">non si iscriveranno</div>
+      </div>
+      <div class="tot" style="border-top-color:var(--bl)">
+        <div class="tot-l">Recuperabili</div>
+        <div class="tot-v">5</div>
+        <div class="tot-s">impedimento temporaneo</div>
+      </div>
+    </div>
+    <div class="alert ao">
+      <div class="alert-l">📌 Come leggere il mese</div>
+      Su 100 persone che ci contattano, circa 7 si iscrivono subito. Altre 22 sono ancora calde. <strong>I 17 "Richiamare" sono la priorità assoluta</strong> — senza un follow-up tempestivo si perdono in silenzio.
+    </div>
+  </div>
+
+  <!-- TABELLA COMPARATIVA -->
+  <div>
+    <div class="sh"><h2>Confronto Settimanale</h2><div class="sh-pill">Mer–Mar</div></div>
+    <div class="wt">
+      <div class="wt-head">
+        <div class="wt-hc" style="text-align:left">SETT.</div>
+        <div class="wt-hc">CONTATTI</div>
+        <div class="wt-hc">ISCRITTI</div>
+        <div class="wt-hc">PIPELINE</div>
+        <div class="wt-hc">NOTE CRM</div>
+      </div>
+      <div class="wt-row">
+        <div><div class="wt-label">S1</div><div class="wt-period">1–7 Apr 🐣</div></div>
+        <div class="wt-cell"><div class="wt-num">27</div><div class="wt-sub">lead</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">3</div><div class="wt-sub">iscritti</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--or)">5</div><div class="wt-sub">app+prove</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">48%</div><div class="wt-sub">assenti</div></div>
+      </div>
+      <div class="wt-row" style="background:rgba(0,164,106,.03)">
+        <div><div class="wt-label">S2</div><div class="wt-period">8–14 Apr ★</div></div>
+        <div class="wt-cell"><div class="wt-num">46</div><div class="wt-sub">lead</div><div class="delta d-up">↑ +70%</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">4</div><div class="wt-sub">iscritti</div><div class="delta d-up">↑ +1</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">13</div><div class="wt-sub">app+prove</div><div class="delta d-up">↑ +8</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">37%</div><div class="wt-sub">assenti</div><div class="delta d-up">↑ meglio</div></div>
+      </div>
+      <div class="wt-row">
+        <div><div class="wt-label">S3</div><div class="wt-period">15–21 Apr ⚠</div></div>
+        <div class="wt-cell"><div class="wt-num">25</div><div class="wt-sub">lead</div><div class="delta d-dn">↓ -46%</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">0</div><div class="wt-sub">iscritti</div><div class="delta d-dn">↓ ZERO</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">4</div><div class="wt-sub">app+prove</div><div class="delta d-dn">↓ -9</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">56%</div><div class="wt-sub">assenti</div><div class="delta d-dn">↓ peggio</div></div>
+      </div>
+      <!-- MOBILE CARDS -->
+      <div class="wt-mobile">
+        <div class="wtm-card wc1">
+          <div class="wtm-head">
+            <div><div class="wtm-label">Settimana 1</div><div class="wtm-period">1–7 Aprile 🐣 incl. Pasqua</div></div>
+          </div>
+          <div class="wtm-grid">
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Contatti</div><div class="wtm-kpi-val" style="color:var(--or)">27</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Iscritti</div><div class="wtm-kpi-val" style="color:var(--gn)">3</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val">5</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--re)">48%</div></div>
+          </div>
+          <div style="margin-top:10px"><a href="be-w1.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--or);text-decoration:none">Apri dettaglio →</a></div>
+        </div>
+        <div class="wtm-card wc2">
+          <div class="wtm-head">
+            <div><div class="wtm-label">Settimana 2 ★</div><div class="wtm-period">8–14 Aprile · Miglior settimana</div></div>
+          </div>
+          <div class="wtm-grid">
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Contatti</div><div class="wtm-kpi-val" style="color:var(--or)">46</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +70%</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Iscritti</div><div class="wtm-kpi-val" style="color:var(--gn)">4</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +1</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--gn)">13</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +8</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--ye)">37%</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ migliora</div></div>
+          </div>
+          <div style="margin-top:10px"><a href="be-w2.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gn);text-decoration:none">Apri dettaglio →</a></div>
+        </div>
+        <div class="wtm-card wc3">
+          <div class="wtm-head">
+            <div><div class="wtm-label">Settimana 3 ⚠</div><div class="wtm-period">15–21 Aprile · Settimana normale</div></div>
+          </div>
+          <div class="wtm-grid">
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Contatti</div><div class="wtm-kpi-val" style="color:var(--or)">25</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ -46%</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Iscritti</div><div class="wtm-kpi-val" style="color:var(--re)">0</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ ZERO</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--re)">4</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ -9</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--re)">56%</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ peggio</div></div>
+          </div>
+          <div style="margin-top:10px"><a href="be-w3.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--re);text-decoration:none">Apri dettaglio →</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="alert ao" style="margin-top:8px">
+      <div class="alert-l">📅 Nota su Pasqua</div>
+      La 🐣 Settimana 1 (1–7 apr) include <strong>Pasqua (5 apr) e Pasquetta (6 apr)</strong> — il volume più basso e gli alti "persi" sono in parte legati alla festività. La Settimana 3 invece era una settimana lavorativa normale: il calo a 0 iscrizioni non ha giustificazioni esterne.
+    </div>
+    <div class="alert ar">
+      <div class="alert-l">🔴 Allarme Settimana 3</div>
+      La settimana 15–21 aprile è la peggiore del periodo: 0 iscrizioni, pipeline crollata da 13 a 4, note CRM al 56% assenti — <strong>senza alcuna festività come scusa</strong>. Da affrontare in riunione.
+    </div>
+  </div>
+
+  <!-- TREND VISIVO -->
+  <div class="card">
+    <div class="card-t" style="margin-bottom:14px">📈 Iscrizioni Settimana per Settimana</div>
+    <div class="trend-row">
+      <div class="tr-week">S1</div>
+      <div class="tr-wrap"><div class="tr-bar" style="width:75%;background:var(--gn)"><div class="tr-label">Sett. 1–7 Apr (incl. Pasqua)</div></div></div>
+      <div class="tr-count" style="color:var(--gn)">3</div>
+    </div>
+    <div class="trend-row">
+      <div class="tr-week">S2</div>
+      <div class="tr-wrap"><div class="tr-bar" style="width:100%;background:var(--gn)"><div class="tr-label">Sett. 8–14 Apr · miglior settimana</div></div></div>
+      <div class="tr-count" style="color:var(--gn)">4</div>
+    </div>
+    <div class="trend-row">
+      <div class="tr-week">S3</div>
+      <div class="tr-wrap"><div class="tr-bar" style="width:3%;background:var(--re)"><div class="tr-label"></div></div></div>
+      <div class="tr-count" style="color:var(--re)">0</div>
+    </div>
+    <div style="border-top:1px solid var(--bd);padding-top:12px;margin-top:6px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Pipeline Attiva (App + Prove)</div>
+      <div class="trend-row">
+        <div class="tr-week">S1</div>
+        <div class="tr-wrap"><div class="tr-bar" style="width:38%;background:var(--or)"><div class="tr-label">5</div></div></div>
+        <div class="tr-count">5</div>
+      </div>
+      <div class="trend-row">
+        <div class="tr-week">S2</div>
+        <div class="tr-wrap"><div class="tr-bar" style="width:100%;background:var(--or)"><div class="tr-label">13 · picco</div></div></div>
+        <div class="tr-count">13</div>
+      </div>
+      <div class="trend-row">
+        <div class="tr-week">S3</div>
+        <div class="tr-wrap"><div class="tr-bar" style="width:30%;background:var(--ye)"><div class="tr-label">4</div></div></div>
+        <div class="tr-count">4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUALITA' NOTE -->
+  <div>
+    <div class="sh"><h2>Qualità Note CRM</h2><div class="sh-pill">Tutte e 3 le settimane</div></div>
+    <div class="card">
+      <div style="font-size:12px;color:var(--g1);line-height:1.6;margin-bottom:12px">La nota CRM è il "diario" di ogni chiamata. Se è vuota, il lavoro è invisibile: se il consulente è assente o il lead viene ricontattato dopo settimane, non si sa nulla di cosa è già stato detto.</div>
+      <div style="margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--g1);margin-bottom:4px"><span>Settimana 1 — con Pasqua</span><span style="font-weight:600;color:var(--re)">48% assenti</span></div>
+        <div class="nq-bar">
+          <div class="nq-seg" style="width:4%;background:var(--gn)">O</div>
+          <div class="nq-seg" style="width:40%;background:var(--ye)">Suff.</div>
+          <div class="nq-seg" style="width:7%;background:var(--or)">sc</div>
+          <div class="nq-seg" style="width:49%;background:var(--re)">Assente</div>
+        </div>
+      </div>
+      <div style="margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--g1);margin-bottom:4px"><span>Settimana 2 — migliore del periodo</span><span style="font-weight:600;color:var(--ye)">37% assenti</span></div>
+        <div class="nq-bar">
+          <div class="nq-seg" style="width:2%;background:var(--gn)">O</div>
+          <div class="nq-seg" style="width:56%;background:var(--ye)">Sufficienti 56%</div>
+          <div class="nq-seg" style="width:4%;background:var(--or)">sc</div>
+          <div class="nq-seg" style="width:38%;background:var(--re)">Assente</div>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--g1);margin-bottom:4px"><span>Settimana 3 — settimana normale</span><span style="font-weight:600;color:var(--re)">56% assenti ⚠</span></div>
+        <div class="nq-bar">
+          <div class="nq-seg" style="width:0%"></div>
+          <div class="nq-seg" style="width:44%;background:var(--ye)">Sufficienti</div>
+          <div class="nq-seg" style="width:0%"></div>
+          <div class="nq-seg" style="width:56%;background:var(--re)">Assente 56%</div>
+        </div>
+      </div>
+      <div class="alert ar">
+        <div class="alert-l">🔴 Problema strutturale</div>
+        In nessuna settimana le note eccellenti superano il 5%. La settimana 3 — normale, senza festività — è la peggiore. <strong>Simona è l'unica che documenta sistematicamente</strong>: usare le sue note come esempio concreto in riunione.
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div>
+    <div class="sh"><h2>Il Team</h2><div class="sh-pill">Aprile 1–21</div></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+
+      <div class="tc">
+        <div class="tc-head">
+          <div class="tc-av" style="background:#7130d6">S</div>
+          <div><div class="tc-name">Simona</div><div class="tc-totale">27 lead gestiti in aprile</div></div>
+          <div style="text-align:right"><div class="tc-voto" style="color:#7130d6">A</div><div class="tc-voto-l">voto aprile</div></div>
+        </div>
+        <div class="tc-stats">
+          <div class="ts"><div class="ts-v" style="color:var(--gn)">2</div><div class="ts-l">Iscritti</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--or)">6</div><div class="ts-l">App/Prova</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--re)">9</div><div class="ts-l">Persi</div></div>
+          <div class="ts"><div class="ts-v">★★★★★</div><div class="ts-l">Note</div></div>
+        </div>
+        <div class="tc-verdict" style="border-left-color:#7130d6"><strong>La migliore del team.</strong> Note complete, datate e utili in ogni settimana. Ha dimostrato come si gestisce un'obiezione (Scarazzai: già iscritto altrove, under-24, convertito). Ha recuperato Alessandra Brutti con la tecnica del WhatsApp (aveva il blocco chiamate). Il team dovrebbe usare le sue note come modello. Unica nota: volume leggermente basso — può fare di più.</div>
+      </div>
+
+      <div class="tc">
+        <div class="tc-head">
+          <div class="tc-av" style="background:var(--gn)">L</div>
+          <div><div class="tc-name">Lia</div><div class="tc-totale">24 lead gestiti in aprile</div></div>
+          <div style="text-align:right"><div class="tc-voto" style="color:var(--gn)">B+</div><div class="tc-voto-l">voto aprile</div></div>
+        </div>
+        <div class="tc-stats">
+          <div class="ts"><div class="ts-v" style="color:var(--gn)">3</div><div class="ts-l">Iscritti</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--or)">7</div><div class="ts-l">App/Prova</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--re)">11</div><div class="ts-l">Persi</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--re)">★★</div><div class="ts-l">Note</div></div>
+        </div>
+        <div class="tc-verdict" style="border-left-color:var(--gn)"><strong>La più efficace nelle iscrizioni</strong> — chiude bene e velocemente. Ma le note sono quasi sempre assenti. Non sappiamo perché ha perso 11 lead. Se è assente, il team non può gestire i suoi contatti. <strong>Azione: iniziare a scrivere almeno una riga su ogni chiamata effettuata.</strong></div>
+      </div>
+
+      <div class="tc">
+        <div class="tc-head">
+          <div class="tc-av" style="background:var(--bl)">C</div>
+          <div><div class="tc-name">Chiara</div><div class="tc-totale">28 lead gestiti in aprile</div></div>
+          <div style="text-align:right"><div class="tc-voto" style="color:var(--bl)">B</div><div class="tc-voto-l">voto aprile</div></div>
+        </div>
+        <div class="tc-stats">
+          <div class="ts"><div class="ts-v" style="color:var(--gn)">2</div><div class="ts-l">Iscritti</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--or)">9</div><div class="ts-l">App/Prova</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--re)">9</div><div class="ts-l">Persi</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--ye)">★★★</div><div class="ts-l">Note</div></div>
+        </div>
+        <div class="tc-verdict" style="border-left-color:var(--bl)"><strong>Volume alto, tasso appuntamenti buono.</strong> Le note esistono ma sono spesso di una sola parola. Nella settimana 3 ha lasciato 4 lead su 5 senza documentazione — settimana lavorativa normale. Il dato è peggiorato rispetto alla settimana 2 senza ragioni esterne. Da monitorare e affrontare.</div>
+      </div>
+
+      <div class="tc">
+        <div class="tc-head">
+          <div class="tc-av" style="background:var(--or)">F</div>
+          <div><div class="tc-name">Francesca</div><div class="tc-totale">19 lead gestiti in aprile</div></div>
+          <div style="text-align:right"><div class="tc-voto" style="color:var(--or)">C</div><div class="tc-voto-l">voto aprile</div></div>
+        </div>
+        <div class="tc-stats">
+          <div class="ts"><div class="ts-v" style="color:var(--gn)">2</div><div class="ts-l">Iscritti</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--or)">7</div><div class="ts-l">App/Prova</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--re)">8</div><div class="ts-l">Persi</div></div>
+          <div class="ts"><div class="ts-v" style="color:var(--re)">★★</div><div class="ts-l">Note</div></div>
+        </div>
+        <div class="tc-verdict" style="border-left-color:var(--or)"><strong>Iscrizioni nella media ma qualità CRM la più bassa del team.</strong> Gestisce molti lead Reformer da Meta Ads che rimangono senza nota e senza stato. La settimana 3 ha visto 0 conversioni e 0 appuntamenti. Caso critico: ha abbandonato Chiara Milan (interessata a 4 servizi incluso Body Lab) senza nessun follow-up — lead di alto valore perso per inazione.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LINK SETTIMANE -->
+  <div>
+    <div class="sh"><h2>Apri il Dettaglio</h2><div class="sh-pill">Clicca sulla settimana</div></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="be-w1.html" class="wn">
+        <div class="wn-num" style="color:var(--or)">S1</div>
+        <div style="flex:1"><div class="wn-title">Sett. 1 · 1–7 Aprile</div>
+        <div class="wn-meta"><span class="wt-tag tg">3 iscritti</span><span class="wt-tag ty">5 pipeline</span><span class="wt-tag">27 lead</span><span class="wt-tag">🐣 incl. Pasqua</span></div></div>
+        <div class="wn-arrow">›</div>
+      </a>
+      <a href="be-w2.html" class="wn">
+        <div class="wn-num" style="color:var(--gn)">S2</div>
+        <div style="flex:1"><div class="wn-title">Sett. 2 · 8–14 Aprile ★ Miglior settimana</div>
+        <div class="wn-meta"><span class="wt-tag tg">4 iscritti · record</span><span class="wt-tag ty">13 pipeline</span><span class="wt-tag">46 lead</span></div></div>
+        <div class="wn-arrow">›</div>
+      </a>
+      <a href="be-w3.html" class="wn">
+        <div class="wn-num" style="color:var(--re)">S3</div>
+        <div style="flex:1"><div class="wn-title">Sett. 3 · 15–21 Aprile</div>
+        <div class="wn-meta"><span class="wt-tag tr">0 iscritti ⚠</span><span class="wt-tag ty">4 pipeline</span><span class="wt-tag">25 lead</span><span class="wt-tag tr">settimana normale</span></div></div>
+        <div class="wn-arrow">›</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- AZIONI URGENTI -->
+  <div>
+    <div class="sh"><h2>Da Fare Questa Settimana</h2><div class="sh-pill">Priorità</div></div>
+    <div class="card">
+      <div style="font-size:12px;color:var(--g1);line-height:1.6;margin-bottom:10px">Lead caldi da ricontattare <strong>entro venerdì 25 aprile</strong>:</div>
+      <div class="urg-item u-re"><strong>Edna da Silva (Simona)</strong> — ha chiesto di essere richiamata giovedì mattina. Appuntamento da fissare.</div>
+      <div class="urg-item u-re"><strong>Paola Vicentini (Simona)</strong> — ammalata di otite, appuntamento lunedì pomeriggio quando sta meglio.</div>
+      <div class="urg-item u-or"><strong>Chiara Milan (Francesca)</strong> — lead caldo, 4 servizi + Body Lab, mai ricontattata. Urgente recuperarla.</div>
+      <div class="urg-item u-or"><strong>Elisa Buneta (Simona)</strong> — Body Camp con 3 figli, WP inviato, aspetta risposta per appuntamento.</div>
+      <div class="urg-item u-bl"><strong>Maria Rosa Melotti (Lia)</strong> — intervento chirurgico, richiamare metà maggio dopo recupero.</div>
+      <div class="urg-item u-bl"><strong>Noemi Sandri (Chiara)</strong> — Body Camp, lead stagionale con scadenza estate. Da contattare subito.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-be"><img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie"></div>
+      <div class="footer-divider"></div>
+      <div class="footer-r2d">
+        <img src="https://www.bodyenergie.it/wp-content/uploads/2026/04/R2D.png" alt="Ready 2 Digital">
+        <div class="footer-credit">
+          <div class="footer-credit-main">Report by Maurizio Taruggi</div>
+          <div class="footer-credit-sub">Ready 2 Digital</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">Dashboard Commerciale · Aprile 2026 · Aggiornata al 21/04/2026 · Schema Mercoledì–Martedì</div>
+  </div>
+</footer>
+
+</body>
+</html>

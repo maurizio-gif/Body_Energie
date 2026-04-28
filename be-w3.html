@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Energie · Settimana 3 · 15–21 Aprile 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--or:#e8720c;--or2:#fdf0e6;--bk:#1a1a1a;--g1:#444;--g2:#777;--g3:#aaa;--g4:#e4e4e4;--bg:#f6f6f4;--wh:#fff;--gn:#00a46a;--re:#d42b2b;--ye:#df7800;--bl:#1a6fd4;--pu:#7130d6;--bd:#e0e0e0}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--bk);font-size:14px;line-height:1.5;overflow-x:hidden}
+nav{background:var(--wh);border-bottom:3px solid #d42b2b;padding:0 16px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.nav-logo{display:flex;align-items:center;gap:0}.nav-logo img{height:34px;width:auto;display:block}
+.nav-be{background:#d42b2b;color:#fff;width:32px;height:32px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;text-decoration:none;padding:5px 12px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.nl-gray{color:var(--g2);border:1px solid var(--bd)}.nl-active{background:#d42b2b;color:#fff}
+.hero{background:#d42b2b;padding:24px 16px 20px;overflow:hidden;position:relative}
+.hero::after{content:'S3';position:absolute;right:-4px;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:100px;color:rgba(255,255,255,.08);line-height:1;pointer-events:none}
+.hero-tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:8px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:34px;line-height:.95;color:#fff;text-transform:uppercase;margin-bottom:10px}
+.hero-stats{display:flex;gap:14px;flex-wrap:wrap}
+.hs{font-size:12px;color:rgba(255,255,255,.7)}.hs strong{color:#fff}
+main{padding:16px;display:flex;flex-direction:column;gap:16px;max-width:720px;margin:0 auto}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sh h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;color:var(--bk)}
+.sh::after{content:'';flex:1;height:2px;background:var(--bd)}
+.sh-pill{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:2px;background:rgba(255,255,255,.9);color:var(--bk);white-space:nowrap;flex-shrink:0}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px 12px;border-top:4px solid var(--bd)}
+.kpi.ko{border-top-color:var(--or)}.kpi.kgn{border-top-color:var(--gn)}.kpi.kye{border-top-color:var(--ye)}.kpi.kre{border-top-color:var(--re)}.kpi.kpu{border-top-color:var(--pu)}.kpi.kbl{border-top-color:var(--bl)}
+.kpi-l{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:6px}
+.kpi-v{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:38px;line-height:1}
+.kpi-s{font-size:11px;color:var(--g3);margin-top:3px}
+.delta{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;padding:1px 5px;border-radius:2px;margin-top:4px}
+.d-up{background:#e6f6ef;color:var(--gn)}.d-dn{background:#fdeaea;color:var(--re)}.d-eq{background:var(--g4);color:var(--g2)}
+.card{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:16px}
+.card-t{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.card-s{font-size:11px;color:var(--g2);margin-bottom:14px}
+.pbar{display:flex;height:30px;border-radius:4px;overflow:hidden;gap:2px;margin-bottom:14px}
+.ps{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;color:#fff;min-width:0}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--g1)}
+.ld{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.lp{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;color:var(--bk)}
+.bars{display:flex;flex-direction:column;gap:9px}
+.br-top{display:flex;justify-content:space-between;font-size:11px;color:var(--g1);margin-bottom:4px}
+.br-pct{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;color:var(--bk);flex-shrink:0}
+.br-track{height:8px;background:var(--g4);border-radius:4px;overflow:hidden}
+.br-fill{height:100%;border-radius:4px}
+.alert{border-radius:4px;padding:11px 13px;font-size:12px;line-height:1.6;margin-top:10px}
+.ao{background:var(--or2);border:1px solid rgba(232,114,12,.2)}.ag{background:#e6f6ef;border:1px solid rgba(0,164,106,.2)}.ar{background:#fdeaea;border:1px solid rgba(212,43,43,.2)}.ab{background:#e4eefb;border:1px solid rgba(26,111,212,.2)}
+.alert-l{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ao .alert-l{color:var(--or)}.ag .alert-l{color:var(--gn)}.ar .alert-l{color:var(--re)}.ab .alert-l{color:var(--bl)}
+.c-rows{display:flex;flex-direction:column;gap:10px}
+.cr{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px;border-left:4px solid var(--bd)}
+.cr.ch{border-left-color:var(--bl)}.cr.cl{border-left-color:var(--gn)}.cr.cf{border-left-color:var(--or)}.cr.cs{border-left-color:var(--pu)}
+.cr-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cr-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;color:#fff;flex-shrink:0}
+.cr-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.cr-sub{font-size:11px;color:var(--g2);margin-top:2px}
+.cr-note{margin-left:auto;text-align:right;flex-shrink:0}
+.cr-note-v{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px}
+.cr-note-l{font-size:9px;color:var(--g3);text-transform:uppercase;letter-spacing:.06em}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.st{background:var(--bg);border-radius:4px;padding:8px 4px;text-align:center}
+.st-v{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;line-height:1}
+.st-l{font-size:9px;color:var(--g3);text-align:center;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.cr-verdict{font-size:12px;color:var(--g1);line-height:1.6;padding:10px;background:var(--bg);border-radius:4px;border-left:3px solid var(--bd)}
+.list-items{display:flex;flex-direction:column;gap:7px}
+.li-item{display:flex;gap:9px;align-items:flex-start}
+.li-icon{flex-shrink:0;font-size:13px;line-height:1.4}
+.li-text{font-size:12px;color:var(--g1);line-height:1.6}
+.li-text strong{color:var(--bk)}
+.nq-bar{height:18px;border-radius:4px;overflow:hidden;display:flex;gap:1px;margin-bottom:8px}
+.nq-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;color:#fff;min-width:0}
+.separator{background:var(--bk);padding:14px 16px;margin:4px -16px;display:flex;align-items:center;gap:10px}
+.sep-line{width:3px;height:36px;background:#d42b2b;border-radius:2px;flex-shrink:0}
+.sep-t{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;color:#fff;line-height:1.1}
+.sep-s{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-top:8px}
+.fb{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#d42b2b;margin-bottom:4px}
+.fs{font-size:11px;margin-bottom:12px}
+.fn{display:flex;gap:8px;flex-wrap:wrap}
+.fn a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;padding:6px 12px;border:1px solid rgba(255,255,255,.15);border-radius:3px}
+.fn a.active{background:#d42b2b;color:#fff;border-color:#d42b2b}
+
+/* FOOTER */
+footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-top:8px}
+.footer-inner{display:flex;flex-direction:column;gap:14px}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-be img{height:28px;width:auto;filter:brightness(0) invert(1);opacity:.8}
+.footer-divider{width:1px;height:32px;background:rgba(255,255,255,.1);flex-shrink:0}
+.footer-r2d{display:flex;align-items:center;gap:10px}
+.footer-r2d img{height:28px;width:auto;opacity:.75}
+.footer-credit{text-align:right}
+.footer-credit-main{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.75)}
+.footer-credit-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+.footer-bottom{font-size:10px;color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.06);padding-top:10px;line-height:1.6}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie">
+  </div>
+  <div class="nav-links">
+    <a href="be-index.html" class="nl nl-active">← Dashboard</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Settimana 3 · 15–21 Aprile 2026 · Mer–Mar</div>
+  <h1>SETT. 3<br>15–21 Apr</h1>
+  <div class="hero-stats">
+    <div class="hs"><strong>25</strong> lead</div>
+    <div class="hs"><strong>0</strong> iscritti</div>
+    <div class="hs"><strong>4</strong> pipeline</div>
+  </div>
+  <div style="background:rgba(255,255,255,.12);border-radius:4px;padding:10px 12px;margin-top:12px">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px">VS SETTIMANA PRECEDENTE</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.8)">
+      <span>Contatti: <strong style="color:#fff">25</strong> (era 46)</span>
+      <span>Iscritti: <strong style="color:#fff">0</strong> (era 4)</span>
+      <span>Pipeline: <strong style="color:#fff">4</strong> (era 13)</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <div class="alert ar"><div class="alert-l">🔴 Attenzione — Settimana normale con risultati negativi</div>Questa è una settimana lavorativa ordinaria, <strong>senza festività</strong>. Il calo di iscrizioni (0), di pipeline (4 vs 13) e la qualità delle note (56% assenti) <strong>non hanno spiegazioni esterne</strong>. È un segnale da affrontare direttamente in riunione.</div>
+
+  <!-- KPI -->
+  <div>
+    <div class="sh"><h2>I Numeri</h2><div class="sh-pill">15–21 Apr</div></div>
+    <div class="kpi-grid">
+      <div class="kpi ko">
+        <div class="kpi-l">Contatti Ricevuti</div>
+        <div class="kpi-v" style="color:var(--or)">25</div>
+        <div class="kpi-s">lead validi</div>
+        <div class="delta d-dn">↓ 21 vs sett. prec.</div>
+      </div>
+      <div class="kpi kgn">
+        <div class="kpi-l">Iscrizioni</div>
+        <div class="kpi-v" style="color:var(--re)">0</div>
+        <div class="kpi-s">nuovi iscritti</div>
+        <div class="delta d-dn">↓ 4 vs sett. prec.</div>
+      </div>
+      <div class="kpi" style="border-top-color:var(--ye)">
+        <div class="kpi-l">Pipeline Attiva</div>
+        <div class="kpi-v">4</div>
+        <div class="kpi-s">app + prove in corso</div>
+        <div class="delta d-dn">↓ 9 vs sett. prec.</div>
+      </div>
+      <div class="kpi kre">
+        <div class="kpi-l">Lead Persi</div>
+        <div class="kpi-v" style="color:var(--re)">1</div>
+        <div class="kpi-s">non si iscriveranno</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="card">
+    <div class="card-t">Dove sono i Lead</div>
+    <div class="card-s">Stato di ogni contatto ricevuto questa settimana</div>
+    <div class="pbar"><div class="ps" style="background:#e8720c;width:16%">4</div><div class="ps" style="background:#d42b2b;width:40%">10</div><div class="ps" style="background:#1a6fd4;width:4%"></div><div class="ps" style="background:#aaa;width:4%"></div><div class="ps" style="background:#ccc;width:36%">9</div></div>
+    <div class="legend"><div class="leg"><span class="ld" style="background:#e8720c"></span>App. Preso<span class="lp">4</span></div><div class="leg"><span class="ld" style="background:#d42b2b"></span>Richiamare<span class="lp">10</span></div><div class="leg"><span class="ld" style="background:#1a6fd4"></span>Rich. Futuro<span class="lp">1</span></div><div class="leg"><span class="ld" style="background:#aaa"></span>Perso<span class="lp">1</span></div><div class="leg"><span class="ld" style="background:#ccc"></span>Nessuno Stato<span class="lp">9</span></div></div>
+    <div class="alert ao"><div class="alert-l">⚠ Follow-up necessario</div><strong>10 lead</strong> aspettano di essere richiamati. Senza una data precisa scritta nel CRM, si raffreddano e si perdono.</div>
+  </div>
+
+  <!-- FONTI -->
+  <div class="card">
+    <div class="card-t">Da Dove Vengono</div>
+    <div class="card-s">Canali che hanno portato i contatti questa settimana</div>
+    <div class="bars"><div><div class="br-top"><span>Meta Ads</span><span class="br-pct">40%</span></div><div class="br-track"><div class="br-fill" style="width:40%;background:#1a6fd4"></div></div></div><div><div class="br-top"><span>Organic/Sito</span><span class="br-pct">28%</span></div><div class="br-track"><div class="br-fill" style="width:28%;background:#00a46a"></div></div></div><div><div class="br-top"><span>Newsletter</span><span class="br-pct">12%</span></div><div class="br-track"><div class="br-fill" style="width:12%;background:#df7800"></div></div></div><div><div class="br-top"><span>Form Contattaci</span><span class="br-pct">20%</span></div><div class="br-track"><div class="br-fill" style="width:20%;background:#7130d6"></div></div></div></div>
+    <div class="alert ag"><div class="alert-l">✅ Fonti ben diversificate</div>I lead vengono da più canali. Quelli dal sito diretto (Organic/Sito) tendono ad essere i più motivati e si convertono meglio.</div>
+  </div>
+
+  <!-- ATTIVITA' -->
+  <div class="card">
+    <div class="card-t">Cosa Cercano</div>
+    <div class="card-s">Servizi di interesse dichiarati dai lead</div>
+    <div class="bars"><div><div class="br-top"><span>Pilates Reformer</span><span class="br-pct">40%</span></div><div class="br-track"><div class="br-fill" style="width:40%;background:#e8720c"></div></div></div><div><div class="br-top"><span>Sala Pesi</span><span class="br-pct">24%</span></div><div class="br-track"><div class="br-fill" style="width:24%;background:#1a6fd4"></div></div></div><div><div class="br-top"><span>Corsi Fitness</span><span class="br-pct">16%</span></div><div class="br-track"><div class="br-fill" style="width:16%;background:#7130d6"></div></div></div><div><div class="br-top"><span>Body Camp</span><span class="br-pct">8%</span></div><div class="br-track"><div class="br-fill" style="width:8%;background:#df7800"></div></div></div><div><div class="br-top"><span>Acqua Fitness</span><span class="br-pct">8%</span></div><div class="br-track"><div class="br-fill" style="width:8%;background:#00a46a"></div></div></div><div><div class="br-top"><span>Nuoto Bimbi</span><span class="br-pct">4%</span></div><div class="br-track"><div class="br-fill" style="width:4%;background:#aaa"></div></div></div></div>
+  </div>
+
+  <!-- TEAM -->
+  <div>
+    <div class="sh"><h2>Il Team</h2><div class="sh-pill">4 Consulenti</div></div>
+    <div class="c-rows"><div class="cr cs">
+  <div class="cr-head">
+    <div class="cr-av" style="background:#7130d6">S</div>
+    <div>
+      <div class="cr-name">SIMONA</div>
+      <div class="cr-sub">9 lead questa settimana</div>
+    </div>
+    <div class="cr-note">
+      <div class="cr-note-v">★★★★</div>
+      <div class="cr-note-l">note CRM</div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="st"><div class="st-v" style="color:var(--gn)">0</div><div class="st-l">Iscritti</div></div>
+    <div class="st"><div class="st-v" style="color:var(--or)">2</div><div class="st-l">App/Prova</div></div>
+    <div class="st"><div class="st-v" style="color:var(--re)">4</div><div class="st-l">Persi</div></div>
+    <div class="st"><div class="st-v">9</div><div class="st-l">Tot.</div></div>
+  </div>
+  <div class="cr-verdict" style="border-left-color:#7130d6">0 iscritti ma gestione corretta: 4 lead in RICHIAMARE tutti con note datate e WP inviato (Cappon, Trivellati, Dall'Acqua, da Silva). Miriam Vizzi: appuntamento con figlia, referral da amici FB. Paola Vicentini: follow-up da settimana precedente — standard alto mantenuto.</div>
+</div><div class="cr cl">
+  <div class="cr-head">
+    <div class="cr-av" style="background:#00a46a">L</div>
+    <div>
+      <div class="cr-name">LIA</div>
+      <div class="cr-sub">7 lead questa settimana</div>
+    </div>
+    <div class="cr-note">
+      <div class="cr-note-v">★★</div>
+      <div class="cr-note-l">note CRM</div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="st"><div class="st-v" style="color:var(--gn)">0</div><div class="st-l">Iscritti</div></div>
+    <div class="st"><div class="st-v" style="color:var(--or)">2</div><div class="st-l">App/Prova</div></div>
+    <div class="st"><div class="st-v" style="color:var(--re)">1</div><div class="st-l">Persi</div></div>
+    <div class="st"><div class="st-v">7</div><div class="st-l">Tot.</div></div>
+  </div>
+  <div class="cr-verdict" style="border-left-color:#00a46a">2 appuntamenti (Giada Porta Nuoto Bimbi, Nenad Jankovic). Maria Rosa Melotti correttamente taggata DA RICHIAMARE FUTURO per intervento. Marco Rossi PERSO senza nota — schema abituale che si ripete.</div>
+</div><div class="cr ch">
+  <div class="cr-head">
+    <div class="cr-av" style="background:#1a6fd4">C</div>
+    <div>
+      <div class="cr-name">CHIARA</div>
+      <div class="cr-sub">5 lead questa settimana</div>
+    </div>
+    <div class="cr-note">
+      <div class="cr-note-v">★</div>
+      <div class="cr-note-l">note CRM</div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="st"><div class="st-v" style="color:var(--gn)">0</div><div class="st-l">Iscritti</div></div>
+    <div class="st"><div class="st-v" style="color:var(--or)">0</div><div class="st-l">App/Prova</div></div>
+    <div class="st"><div class="st-v" style="color:var(--re)">1</div><div class="st-l">Persi</div></div>
+    <div class="st"><div class="st-v">5</div><div class="st-l">Tot.</div></div>
+  </div>
+  <div class="cr-verdict" style="border-left-color:#1a6fd4">Settimana peggiore: 4 lead su 5 senza nota e senza stato. GIULIA MENINI, Francesca Braggio, Alessandra Bignetti, Noemi Sandri — tutti lasciati senza documentazione. Nessuna scusa: settimana lavorativa normale.</div>
+</div><div class="cr cf">
+  <div class="cr-head">
+    <div class="cr-av" style="background:#e8720c">F</div>
+    <div>
+      <div class="cr-name">FRANCESCA</div>
+      <div class="cr-sub">4 lead questa settimana</div>
+    </div>
+    <div class="cr-note">
+      <div class="cr-note-v">★</div>
+      <div class="cr-note-l">note CRM</div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="st"><div class="st-v" style="color:var(--gn)">0</div><div class="st-l">Iscritti</div></div>
+    <div class="st"><div class="st-v" style="color:var(--or)">0</div><div class="st-l">App/Prova</div></div>
+    <div class="st"><div class="st-v" style="color:var(--re)">2</div><div class="st-l">Persi</div></div>
+    <div class="st"><div class="st-v">4</div><div class="st-l">Tot.</div></div>
+  </div>
+  <div class="cr-verdict" style="border-left-color:#e8720c">0 conversioni, 0 appuntamenti. Chiara Milan (interessata a 4 servizi incluso Body Lab): lead caldo completamente abbandonato. 3 lead Meta Ads Reformer tutti senza nota. Settimana più debole del periodo — senza attenuanti.</div>
+</div></div>
+  </div>
+
+  <!-- SEPARATORE -->
+  <div class="separator">
+    <div class="sep-line"></div>
+    <div>
+      <div class="sep-t">Analisi del Lavoro</div>
+      <div class="sep-s">Note CRM · Perché non si iscrivono · Cosa fare</div>
+    </div>
+  </div>
+
+  <!-- NOTE CRM -->
+  <div class="card">
+    <div class="card-t">📋 Qualità delle Note CRM</div>
+    <div class="card-s">Come il team documenta ogni contatto</div>
+    <div style="font-size:12px;color:var(--g1);line-height:1.6;margin-bottom:12px">Ogni volta che un consulente chiama un lead, dovrebbe scrivere nel CRM cosa è successo. Questa barra mostra quante note sono state scritte bene, a metà, male o per niente.</div>
+    <div class="nq-bar"><div class="nq-seg" style="width:44%;background:var(--ye)">S</div><div class="nq-seg" style="width:56%;background:var(--re)">A</div></div>
+    <div style="display:flex;gap:10px;font-size:10px;flex-wrap:wrap;margin-bottom:10px">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--gn);display:inline-block"></span>Ottima (0)</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--ye);display:inline-block"></span>Sufficiente (11)</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--or);display:inline-block"></span>Scarna (0)</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--re);display:inline-block"></span>Assente (14)</span>
+    </div>
+    <div class="alert ar"><div class="alert-l">🔴 Problema note</div>Il 56% delle note è assente o quasi. Vuol dire che più della metà del lavoro non è documentato nel CRM.</div>
+    <div style="margin-top:10px;font-size:12px;color:var(--g1);line-height:1.6;padding:10px;background:var(--bg);border-radius:4px;border-left:3px solid var(--bd)">Settimana lavorativa normale con il peggior risultato: 0 iscrizioni, 56% note assenti, 0 note eccellenti. Non ci sono fattori esterni che giustificano questo calo. Solo Simona mantiene la qualità. Il confronto con la settimana 2 è netto: da 13 pipeline a 4, da 4 iscritti a 0.</div>
+  </div>
+
+  <!-- PERCHE' NON SI ISCRIVONO -->
+  <div class="card">
+    <div class="card-t">❓ Perché Non si Sono Iscritti</div>
+    <div class="card-s">Motivi principali emersi dalle note e dagli stati del CRM</div>
+    <div class="list-items"><div class="li-item"><div class="li-icon">↘</div><div class="li-text">Non risponde — lead ancora aperti (10 in RICHIAMARE, da gestire questa settimana)</div></div><div class="li-item"><div class="li-icon">↘</div><div class="li-text">Orari / impegni personali (Alessandra Leo: brutto momento, Paola Vicentini: otite)</div></div><div class="li-item"><div class="li-icon">↘</div><div class="li-text">Intervento chirurgico (Maria Rosa Melotti — da richiamare a maggio)</div></div><div class="li-item"><div class="li-icon">↘</div><div class="li-text">Lead Meta Ads Reformer non raggiunti — pattern ricorrente Francesca</div></div></div>
+  </div>
+
+  <!-- BENE / DA MIGLIORARE -->
+  <div class="two-col">
+    <div style="background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px;border-top:3px solid var(--gn)">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:var(--gn);margin-bottom:10px">✅ Ha Funzionato</div>
+      <div class="list-items"><div class="li-item"><div class="li-icon" style="color:var(--gn)">▶</div><div class="li-text">Simona: Miriam Vizzi — referral da amici Facebook, verrà con la figlia (potenziale doppia iscrizione)</div></div><div class="li-item"><div class="li-icon" style="color:var(--gn)">▶</div><div class="li-text">Simona: Elisa Buneta — 3 figli, Body Camp, follow-up documentato con WP</div></div><div class="li-item"><div class="li-icon" style="color:var(--gn)">▶</div><div class="li-text">Simona: Edna da Silva — ha risposto al secondo tentativo, ha comunicato quando richiamarla</div></div><div class="li-item"><div class="li-icon" style="color:var(--gn)">▶</div><div class="li-text">Lia: Maria Rosa Melotti gestita correttamente (intervento → DA RICHIAMARE FUTURO)</div></div></div>
+    </div>
+    <div style="background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:14px;border-top:3px solid var(--re)">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:var(--re);margin-bottom:10px">⚠ Da Migliorare</div>
+      <div class="list-items"><div class="li-item"><div class="li-icon" style="color:var(--re)">▶</div><div class="li-text">0 iscrizioni — prima e unica volta ad aprile. Settimana normale, nessuna festività: risultato da analizzare</div></div><div class="li-item"><div class="li-icon" style="color:var(--re)">▶</div><div class="li-text">Chiara: 4 lead su 5 senza documentazione — il peggior dato individuale del mese, senza giustificazioni</div></div><div class="li-item"><div class="li-icon" style="color:var(--re)">▶</div><div class="li-text">Francesca: Chiara Milan (4 servizi + Body Lab) completamente ignorata — lead di alto valore perso</div></div><div class="li-item"><div class="li-icon" style="color:var(--re)">▶</div><div class="li-text">56% note assenti — peggior dato del periodo, in una settimana lavorativa piena</div></div><div class="li-item"><div class="li-icon" style="color:var(--re)">▶</div><div class="li-text">Il crollo di pipeline (da 13 a 4) è netto: meno volume e meno qualità nella gestione</div></div></div>
+    </div>
+  </div>
+
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-be"><img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie"></div>
+      <div class="footer-divider"></div>
+      <div class="footer-r2d">
+        <img src="https://www.bodyenergie.it/wp-content/uploads/2026/04/R2D.png" alt="Ready 2 Digital">
+        <div class="footer-credit">
+          <div class="footer-credit-main">Report by Maurizio Taruggi</div>
+          <div class="footer-credit-sub">Ready 2 Digital</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:2px"><a href="be-index.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:5px 12px;border:1px solid rgba(255,255,255,.15);border-radius:3px">← Dashboard</a></div>
+    <div class="footer-bottom">Settimana 3 · 15–21 Aprile 2026 · Mercoledì–Martedì</div>
+  </div>
+</footer>
+</body>
+</html>
