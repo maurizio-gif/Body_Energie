@@ -223,6 +223,26 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
 .hbg-external-sub{font-size:11px;color:var(--g2)}
 .hbg-footer{margin-top:auto;padding:16px 20px;border-top:1px solid var(--bd);font-size:11px;color:var(--g3);line-height:1.5}
 
+
+/* ── CONVERSION NOTE INDEX ── */
+.conv-explain{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:16px;border-left:4px solid var(--or)}
+.conv-explain-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.04em;color:var(--or);margin-bottom:10px}
+.conv-lvl{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--bd)}
+.conv-lvl:last-child{border:none;padding-bottom:0}
+.conv-lvl-n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:var(--or);width:28px;flex-shrink:0;line-height:1.1}
+.conv-lvl-t{font-size:13px;color:var(--bk);font-weight:600;margin-bottom:3px}
+.conv-lvl-d{font-size:12px;color:var(--g1);line-height:1.6}
+/* table update for maturate */
+.wt-maturate{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:#1a6fd4}
+.wt-head-5{display:grid;grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr;background:var(--bk);padding:8px 14px;gap:4px}
+.wt-hc{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center}
+.wt-hc:first-child{text-align:left}
+.wt-row-5{display:grid;grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr;padding:10px 14px;gap:4px;border-bottom:1px solid var(--bd);align-items:center}
+.wt-row-5:last-child{border:none}
+@media(max-width:580px){
+  .wt-head-5,.wt-row-5{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -242,19 +262,19 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
     <div class="wnav-month">
       <div class="wnav-month-label">Apr</div>
       <div class="wnav-weeks">
-        <a href="be-w1.html" class="nwm-link">
+        <a href="report-w1.html" class="nwm-link">
           <span class="nwm-dot ok"></span>S1
         </a>
-        <a href="be-w2.html" class="nwm-link">
+        <a href="report-w2.html" class="nwm-link">
           <span class="nwm-dot ok"></span>S2
         </a>
-        <a href="be-w3.html" class="nwm-link">
+        <a href="report-w3.html" class="nwm-link">
           <span class="nwm-dot bad"></span>S3
         </a>
-        <a href="be-w4.html" class="nwm-link">
+        <a href="report-w4.html" class="nwm-link">
           <span class="nwm-dot warn"></span>S4
         </a>
-        <a href="be-w5.html" class="nwm-link">
+        <a href="report-w5.html" class="nwm-link">
           <span class="nwm-dot warn"></span>S5
         </a>
       </div>
@@ -356,47 +376,80 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
 
   <!-- TABELLA COMPARATIVA -->
   <div>
+
+  <!-- SPIEGAZIONE METODOLOGIA CONVERSIONI -->
+  <div class="conv-explain">
+    <div class="conv-explain-title">📐 Come leggiamo le conversioni</div>
+    <div class="conv-lvl">
+      <div class="conv-lvl-n">L1</div>
+      <div>
+        <div class="conv-lvl-t">Iscrizioni Maturate — quando si è iscritto davvero</div>
+        <div class="conv-lvl-d">Conta le iscrizioni nella settimana in cui sono avvenute, indipendentemente da quando il lead è entrato. Mostra il <strong>revenue reale</strong> di quella settimana. Un lead entrato in S2 che si iscrive in S4 viene contato in S4.</div>
+      </div>
+    </div>
+    <div class="conv-lvl">
+      <div class="conv-lvl-n">L2</div>
+      <div>
+        <div class="conv-lvl-t">Pipeline a Maturazione — chi è probabile che si iscriva presto</div>
+        <div class="conv-lvl-d">I lead caldi in appuntamento o prova della settimana corrente e delle precedenti. Il <strong>tempo medio di conversione è 26 giorni</strong> (mediana 14): quasi il 75% degli iscritti ci mette più di una settimana. Questi lead vanno seguiti attivamente.</div>
+      </div>
+    </div>
+    <div class="conv-lvl">
+      <div class="conv-lvl-n">LC</div>
+      <div>
+        <div class="conv-lvl-t">Tasso Coorte — la vera efficacia per settimana di acquisizione</div>
+        <div class="conv-lvl-d">Su tutti i lead acquisiti in una settimana, quanti si sono poi iscritti (anche settimane dopo). W1 = 26%, W2 = 17%+. Attendibile solo dopo 30+ giorni dalla coorte — le settimane recenti avranno tassi parziali.</div>
+      </div>
+    </div>
+  </div>
+
     <div class="sh"><h2>Confronto Settimanale</h2><div class="sh-pill">Mer–Mar</div></div>
     <div class="wt">
-      <div class="wt-head">
+      <div class="wt-head-5">
         <div class="wt-hc" style="text-align:left">SETT.</div>
-        <div class="wt-hc">CONTATTI</div>
-        <div class="wt-hc">ISCRITTI</div>
+        <div class="wt-hc">LEAD</div>
+        <div class="wt-hc">ISC. DIRETTI</div>
+        <div class="wt-hc" style="color:#93c5fd">ISC. MATURATE</div>
         <div class="wt-hc">PIPELINE</div>
         <div class="wt-hc">NOTE CRM</div>
       </div>
-      <div class="wt-row">
+      <div class="wt-row-5">
         <div><div class="wt-label">S1</div><div class="wt-period">1–7 Apr 🐣</div></div>
         <div class="wt-cell"><div class="wt-num">27</div><div class="wt-sub">lead</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">3</div><div class="wt-sub">iscritti</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">3</div><div class="wt-sub">stessa sett.</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:#1a6fd4">2</div><div class="wt-sub wt-maturate">↑ 0 da prec.</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--or)">5</div><div class="wt-sub">app+prove</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">48%</div><div class="wt-sub">assenti</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">48%</div><div class="wt-sub">note ass.</div></div>
       </div>
-      <div class="wt-row" style="background:rgba(0,164,106,.03)">
+      <div class="wt-row-5" style="background:rgba(0,164,106,.03)">
         <div><div class="wt-label">S2</div><div class="wt-period">8–14 Apr ★</div></div>
         <div class="wt-cell"><div class="wt-num">46</div><div class="wt-sub">lead</div><div class="delta d-up">↑ +70%</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">4</div><div class="wt-sub">iscritti</div><div class="delta d-up">↑ +1</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">4</div><div class="wt-sub">stessa sett.</div><div class="delta d-up">↑ +1</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:#1a6fd4">11</div><div class="wt-sub wt-maturate">★ con tardive</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">13</div><div class="wt-sub">app+prove</div><div class="delta d-up">↑ +8</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">37%</div><div class="wt-sub">assenti</div><div class="delta d-up">↑ meglio</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">37%</div><div class="wt-sub">note ass.</div><div class="delta d-up">↑ meglio</div></div>
       </div>
-      <div class="wt-row">
+      <div class="wt-row-5">
         <div><div class="wt-label">S3</div><div class="wt-period">15–21 Apr ⚠</div></div>
         <div class="wt-cell"><div class="wt-num">25</div><div class="wt-sub">lead</div><div class="delta d-dn">↓ -46%</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">0</div><div class="wt-sub">iscritti</div><div class="delta d-dn">↓ ZERO</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">0</div><div class="wt-sub">stessa sett.</div><div class="delta d-dn">↓ ZERO</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:#1a6fd4">3</div><div class="wt-sub wt-maturate">2 da S2</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--re)">4</div><div class="wt-sub">app+prove</div><div class="delta d-dn">↓ -9</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">56%</div><div class="wt-sub">assenti</div><div class="delta d-dn">↓ peggio</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">56%</div><div class="wt-sub">note ass.</div><div class="delta d-dn">↓ peggio</div></div>
       </div>
       <div class="wt-row" style="background:rgba(26,111,212,.03)">
         <div><div class="wt-label" style="color:#1a6fd4">S4</div><div class="wt-period">22–28 Apr 📈</div></div>
         <div class="wt-cell"><div class="wt-num">27</div><div class="wt-sub">lead</div><div class="delta d-up">↑ +8%</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">1</div><div class="wt-sub">iscritti</div><div class="delta d-up">↑ torna</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">1</div><div class="wt-sub">stessa sett.</div><div class="delta d-up">↑ torna</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:#1a6fd4">8</div><div class="wt-sub wt-maturate">4 da S2</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">13</div><div class="wt-sub">app+prove</div><div class="delta d-up">↑ +9</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">48%</div><div class="wt-sub">assenti</div><div class="delta d-up">↑ meglio</div></div>
       </div>
       <div class="wt-row">
         <div><div class="wt-label" style="color:#00875a">S5</div><div class="wt-period">29Apr–5Mag</div></div>
         <div class="wt-cell"><div class="wt-num">21</div><div class="wt-sub">lead</div><div class="delta d-dn">↓ -22%</div></div>
-        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">0</div><div class="wt-sub">iscritti</div><div class="delta d-dn">↓ zero</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">0</div><div class="wt-sub">stessa sett.</div><div class="delta d-dn">↓ zero</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:#1a6fd4">3</div><div class="wt-sub wt-maturate">1 da S2</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">6</div><div class="wt-sub">app+prove</div><div class="delta d-dn">↓ -7</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--re)">48%</div><div class="wt-sub">assenti</div><div class="delta d-eq">= stabile</div></div>
       </div>
@@ -412,7 +465,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
             <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val">5</div></div>
             <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--re)">48%</div></div>
           </div>
-          <div style="margin-top:10px"><a href="be-w1.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--or);text-decoration:none">Apri dettaglio →</a></div>
+          <div style="margin-top:10px"><a href="report-w1.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--or);text-decoration:none">Apri dettaglio →</a></div>
         </div>
         <div class="wtm-card wc2">
           <div class="wtm-head">
@@ -424,7 +477,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
             <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--gn)">13</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +8</div></div>
             <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--ye)">37%</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ migliora</div></div>
           </div>
-          <div style="margin-top:10px"><a href="be-w2.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gn);text-decoration:none">Apri dettaglio →</a></div>
+          <div style="margin-top:10px"><a href="report-w2.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gn);text-decoration:none">Apri dettaglio →</a></div>
         </div>
         <div class="wtm-card wc3">
           <div class="wtm-head">
@@ -436,7 +489,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
             <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--re)">4</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ -9</div></div>
             <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--re)">56%</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ peggio</div></div>
           </div>
-          <div style="margin-top:10px"><a href="be-w3.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--re);text-decoration:none">Apri dettaglio →</a></div>
+          <div style="margin-top:10px"><a href="report-w3.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--re);text-decoration:none">Apri dettaglio →</a></div>
         </div>
         <div class="wtm-card" style="border-left-color:#1a6fd4">
           <div class="wtm-head"><div><div class="wtm-label" style="color:#1a6fd4">Settimana 4</div><div class="wtm-period">22–28 Aprile · Ripresa</div></div></div>
@@ -446,7 +499,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
             <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--gn)">13</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +9</div></div>
             <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--ye)">48%</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ migliora</div></div>
           </div>
-          <div style="margin-top:10px"><a href="be-w4.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#1a6fd4;text-decoration:none">Apri dettaglio →</a></div>
+          <div style="margin-top:10px"><a href="report-w4.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#1a6fd4;text-decoration:none">Apri dettaglio →</a></div>
         </div>
         <div class="wtm-card" style="border-left-color:#00875a">
           <div class="wtm-head"><div><div class="wtm-label" style="color:#00875a">Settimana 5</div><div class="wtm-period">29 Apr–5 Mag · Primo Maggio</div></div></div>
@@ -456,7 +509,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
             <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--ye)">6</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ -7</div></div>
             <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--re)">48%</div><div class="wtm-kpi-delta" style="color:var(--g2)">=</div></div>
           </div>
-          <div style="margin-top:10px"><a href="be-w5.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#00875a;text-decoration:none">Apri dettaglio →</a></div>
+          <div style="margin-top:10px"><a href="report-w5.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#00875a;text-decoration:none">Apri dettaglio →</a></div>
         </div>
       </div>
     </div>
@@ -639,31 +692,31 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
   <div>
     <div class="sh"><h2>Apri il Dettaglio</h2><div class="sh-pill">Clicca sulla settimana</div></div>
     <div style="display:flex;flex-direction:column;gap:10px">
-      <a href="be-w1.html" class="wn">
+      <a href="report-w1.html" class="wn">
         <div class="wn-num" style="color:var(--or)">S1</div>
         <div style="flex:1"><div class="wn-title">Sett. 1 · 1–7 Aprile</div>
         <div class="wn-meta"><span class="wt-tag tg">3 iscritti</span><span class="wt-tag ty">5 pipeline</span><span class="wt-tag">27 lead</span><span class="wt-tag">🐣 incl. Pasqua</span></div></div>
         <div class="wn-arrow">›</div>
       </a>
-      <a href="be-w2.html" class="wn">
+      <a href="report-w2.html" class="wn">
         <div class="wn-num" style="color:var(--gn)">S2</div>
         <div style="flex:1"><div class="wn-title">Sett. 2 · 8–14 Aprile ★ Miglior settimana</div>
         <div class="wn-meta"><span class="wt-tag tg">4 iscritti · record</span><span class="wt-tag ty">13 pipeline</span><span class="wt-tag">46 lead</span></div></div>
         <div class="wn-arrow">›</div>
       </a>
-      <a href="be-w3.html" class="wn">
+      <a href="report-w3.html" class="wn">
         <div class="wn-num" style="color:var(--re)">S3</div>
         <div style="flex:1"><div class="wn-title">Sett. 3 · 15–21 Aprile</div>
         <div class="wn-meta"><span class="wt-tag tr">0 iscritti ⚠</span><span class="wt-tag ty">4 pipeline</span><span class="wt-tag">25 lead</span><span class="wt-tag tr">settimana normale</span></div></div>
         <div class="wn-arrow">›</div>
       </a>
-      <a href="be-w4.html" class="wn">
+      <a href="report-w4.html" class="wn">
         <div class="wn-num" style="color:#1a6fd4">S4</div>
         <div style="flex:1"><div class="wn-title">Sett. 4 · 22–28 Aprile</div>
         <div class="wn-meta"><span class="wt-tag tg">1 iscritto</span><span class="wt-tag tg">13 pipeline · ripresa</span><span class="wt-tag">27 lead</span></div></div>
         <div class="wn-arrow">›</div>
       </a>
-      <a href="be-w5.html" class="wn">
+      <a href="report-w5.html" class="wn">
         <div class="wn-num" style="color:#00875a">S5</div>
         <div style="flex:1"><div class="wn-title">Sett. 5 · 29 Apr–5 Mag</div>
         <div class="wn-meta"><span class="wt-tag tr">0 iscritti</span><span class="wt-tag ty">6 pipeline</span><span class="wt-tag">21 lead</span><span class="wt-tag tn">1° Maggio</span></div></div>
@@ -718,7 +771,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
   <div class="hbg-section">
     <div class="hbg-section-label">Aprile 2026</div>
 
-    <a href="be-w1.html" class="hbg-link">
+    <a href="report-w1.html" class="hbg-link">
       <div class="hbg-link-left">
         <div class="hbg-link-num" style="color:var(--or)">S1</div>
         <div class="hbg-link-info">
@@ -730,7 +783,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
       <div class="hbg-ext"><div class="hbg-dot ok"></div></div>
     </a>
 
-    <a href="be-w2.html" class="hbg-link">
+    <a href="report-w2.html" class="hbg-link">
       <div class="hbg-link-left">
         <div class="hbg-link-num" style="color:var(--gn)">S2</div>
         <div class="hbg-link-info">
@@ -742,7 +795,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
       <div class="hbg-ext"><div class="hbg-dot ok"></div></div>
     </a>
 
-    <a href="be-w3.html" class="hbg-link">
+    <a href="report-w3.html" class="hbg-link">
       <div class="hbg-link-left">
         <div class="hbg-link-num" style="color:var(--re)">S3</div>
         <div class="hbg-link-info">
@@ -754,7 +807,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
       <div class="hbg-ext"><div class="hbg-dot bad"></div></div>
     </a>
 
-    <a href="be-w4.html" class="hbg-link">
+    <a href="report-w4.html" class="hbg-link">
       <div class="hbg-link-left">
         <div class="hbg-link-num" style="color:#1a6fd4">S4</div>
         <div class="hbg-link-info">
@@ -766,7 +819,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
       <div class="hbg-ext"><div class="hbg-dot warn"></div></div>
     </a>
 
-    <a href="be-w5.html" class="hbg-link">
+    <a href="report-w5.html" class="hbg-link">
       <div class="hbg-link-left">
         <div class="hbg-link-num" style="color:#00875a">S5</div>
         <div class="hbg-link-info">

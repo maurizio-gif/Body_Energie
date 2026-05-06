@@ -128,6 +128,68 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
 .nav-airtable{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:7px 16px;border-radius:3px;background:transparent;color:var(--or);border:2px solid var(--or);transition:background .15s,color .15s;white-space:nowrap;flex-shrink:0}
 .nav-airtable:hover{background:var(--or);color:#fff}
 @media(max-width:400px){.nav-airtable{font-size:11px;padding:5px 10px}}
+
+/* ── CONVERSION METRICS ── */
+.conv-section{display:flex;flex-direction:column;gap:10px}
+.conv-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.conv-box{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:16px}
+.conv-box.cb-full{grid-column:1/-1}
+.conv-box-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.conv-box-title .ct-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.conv-big{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;line-height:1;margin-bottom:2px}
+.conv-sub{font-size:12px;color:var(--g2);line-height:1.5}
+.conv-sub strong{color:var(--bk)}
+.conv-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.conv-lead{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:var(--bg);border-radius:4px;border-left:3px solid var(--gn)}
+.conv-lead-name{font-size:12px;font-weight:600;color:var(--bk);margin-bottom:2px}
+.conv-lead-meta{font-size:11px;color:var(--g2)}
+.conv-lead-badge{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:2px;background:#e6f6ef;color:var(--gn);white-space:nowrap;flex-shrink:0;margin-top:1px}
+/* Pipeline a maturazione */
+.pipe-mat{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.pm-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:4px;background:var(--bg)}
+.pm-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.pm-text{flex:1;font-size:12px;color:var(--g1);line-height:1.4}
+.pm-text strong{color:var(--bk);display:block}
+.pm-days{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;color:var(--g2);white-space:nowrap;flex-shrink:0}
+/* Tasso coorte */
+.coorte-bar{height:10px;background:var(--g4);border-radius:5px;overflow:hidden;margin:6px 0 4px}
+.coorte-fill{height:100%;border-radius:5px;background:var(--gn)}
+.coorte-note{font-size:10px;color:var(--g3);font-style:italic}
+@media(max-width:400px){.conv-row{grid-template-columns:1fr}}
+
+
+/* ── NUOVO KPI APERTURA ── */
+.kpi-hero{background:var(--wh);border:1px solid var(--bd);border-radius:6px;overflow:hidden;margin-bottom:0}
+.kpi-hero-top{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--bd)}
+.khc{padding:16px 18px;border-right:1px solid var(--bd)}
+.khc:last-child{border-right:none}
+.khc-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2);margin-bottom:6px}
+.khc-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:56px;line-height:1;margin-bottom:4px}
+.khc-sub{font-size:12px;color:var(--g2)}
+.khc-delta{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;padding:2px 7px;border-radius:2px;margin-top:5px}
+/* Blocco iscrizioni breakdown */
+.isc-break{padding:14px 18px}
+.isc-break-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.isc-break-title::after{content:'';flex:1;height:1px;background:var(--bd)}
+.isc-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--g4)}
+.isc-row:last-child{border:none}
+.isc-row-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#fff;flex-shrink:0}
+.isc-row-label{flex:1;font-size:13px;color:var(--g1);line-height:1.4}
+.isc-row-label strong{display:block;color:var(--bk);font-size:14px}
+.isc-row-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;line-height:1}
+/* bottom strip */
+.kpi-hero-bottom{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--bd)}
+.khb{padding:12px 18px;border-right:1px solid var(--bd);display:flex;align-items:center;gap:10px}
+.khb:last-child{border-right:none}
+.khb-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;line-height:1}
+.khb-info{font-size:11px;color:var(--g2);line-height:1.4}
+.khb-info strong{display:block;font-size:12px;color:var(--bk);margin-bottom:1px}
+@media(min-width:600px){
+  .kpi-hero-top{grid-template-columns:1fr 1fr 1fr}
+  .kpi-hero-bottom{grid-template-columns:repeat(3,1fr)}
+  .khc-val{font-size:64px}
+}
+
 </style>
 </head>
 <body>
@@ -136,7 +198,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
     <img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie">
   </div>
   <div class="nav-links">
-    <a href="index.html" class="nl nl-active">← Dashboard</a>
+    <a href="report-index.html" class="nl nl-active">← Dashboard</a>
     <a href="https://airtable.com/appmmcvVhWV8PNBOC/shr6jiHmGLw8mQlTT" target="_blank" class="nav-airtable">AIRTABLE</a>
   </div>
 </nav>
@@ -159,30 +221,67 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
   <!-- KPI -->
   <div>
     <div class="sh"><h2>I Numeri</h2><div class="sh-pill">1–7 Apr</div></div>
-    <div class="kpi-grid">
-      <div class="kpi ko">
-        <div class="kpi-l">Contatti Ricevuti</div>
-        <div class="kpi-v" style="color:var(--or)">27</div>
-        <div class="kpi-s">lead validi</div>
+    <div class="kpi-hero">
+
+      <!-- RIGA PRINCIPALE: Contatti + Iscritti Totali + Pipeline -->
+      <div class="kpi-hero-top">
+        <div class="khc" style="border-top:4px solid var(--or)">
+          <div class="khc-label">Contatti ricevuti</div>
+          <div class="khc-val" style="color:var(--or)">27</div>
+          <div class="khc-sub">lead validi questa settimana</div>
+          
+        </div>
+        <div class="khc" style="border-top:4px solid #00a46a">
+          <div class="khc-label">Iscritti — Totale Settimana</div>
+          <div class="khc-val" style="color:var(--gn)">2</div>
+          <div class="khc-sub">iscritti effettivi (data iscrizione)</div>
+          <div class="khc-delta d-eq" style="font-size:10px"><span style="color:var(--g3)">0 da settimane precedenti</span></div>
+        </div>
+        <div class="khc" style="border-top:4px solid var(--ye)">
+          <div class="khc-label">Pipeline Attiva</div>
+          <div class="khc-val">5</div>
+          <div class="khc-sub">app + prove in corso</div>
+          
+        </div>
+      </div>
+
+      <!-- BREAKDOWN ISCRIZIONI -->
+      <div class="isc-break">
+        <div class="isc-break-title">Dettaglio Iscritti — da dove vengono</div>
+
+        <div class="isc-row">
+          <div class="isc-row-icon" style="background:#00a46a">1</div>
+          <div class="isc-row-label">
+            <strong>Da lead acquisiti QUESTA settimana</strong>
+            Contatto ricevuto e iscrizione avvenuta nella stessa settimana
+          </div>
+          <div class="isc-row-val" style="color:#00a46a">1</div>
+        </div>
+
+        <div class="isc-row">
+          <div class="isc-row-icon" style="background:#1a6fd4">0</div>
+          <div class="isc-row-label">
+            <strong>Da lead acquisiti in settimane PRECEDENTI</strong>
+            Il contatto era già nel CRM — si è iscritto ora, dopo la maturazione
+          </div>
+          <div class="isc-row-val" style="color:#1a6fd4">0</div>
+        </div>
+
         
       </div>
-      <div class="kpi kgn">
-        <div class="kpi-l">Iscrizioni</div>
-        <div class="kpi-v" style="color:var(--gn)">3</div>
-        <div class="kpi-s">nuovi iscritti</div>
-        
+
+      <!-- BOTTOM: Lead persi + dato coorte -->
+      <div class="kpi-hero-bottom">
+        <div class="khb">
+          <div class="khb-val" style="color:var(--re)">18</div>
+          <div class="khb-info"><strong>Lead Persi</strong>non si iscriveranno</div>
+        </div>
+        <div class="khb">
+          <div class="khb-val" style="color:var(--g2)">3</div>
+          <div class="khb-info"><strong>Stato CRM "Iscritto"</strong>assegnati dal consulente questa sett.</div>
+        </div>
       </div>
-      <div class="kpi" style="border-top-color:var(--ye)">
-        <div class="kpi-l">Pipeline Attiva</div>
-        <div class="kpi-v">5</div>
-        <div class="kpi-s">app + prove in corso</div>
-        
-      </div>
-      <div class="kpi kre">
-        <div class="kpi-l">Lead Persi</div>
-        <div class="kpi-v" style="color:var(--re)">18</div>
-        <div class="kpi-s">non si iscriveranno</div>
-      </div>
+
     </div>
   </div>
 
@@ -292,6 +391,65 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
 </div></div>
   </div>
 
+  
+  <!-- ══ SEZIONE CONVERSIONI (L1 + L2) ══ -->
+  <div>
+    <div class="sh"><h2>Conversioni Reali</h2><div class="sh-pill" style="background:#e8720c;color:#fff;border-color:#e8720c">Dato Effettivo</div></div>
+    <div class="conv-section">
+
+      <!-- L1: ISCRIZIONI MATURATE -->
+      <div class="conv-row">
+        <div class="conv-box">
+          <div class="conv-box-title"><span class="ct-dot" style="background:var(--gn)"></span>Iscrizioni Maturate</div>
+          <div class="conv-big" style="color:var(--gn)">2</div>
+          <div class="conv-sub">iscritti <strong>effettivi</strong> questa settimana<br>
+            <span style="color:var(--gn)">✓ 1 dalla stessa settimana</span><br>
+            <span style="color:var(--g3)">0 da settimane precedenti</span>
+          </div>
+        </div>
+        <div class="conv-box">
+          <div class="conv-box-title"><span class="ct-dot" style="background:#1a6fd4"></span>Tasso Coorte</div>
+          <div class="conv-big" style="color:var(--gn)">~26%</div>
+          <div class="conv-sub">7/27 lead acquisiti<br>questa sett. ora iscritti</div>
+          <div class="coorte-bar"><div class="coorte-fill" style="width:25%;background:#00a46a"></div></div>
+          <div class="coorte-note">Tasso affidabile (>14gg trascorsi). 7 iscritti su 27 lead acquisiti.</div>
+        </div>
+      </div>
+
+      <!-- Dettaglio conversioni da settimane precedenti -->
+      
+
+      <!-- L2: PIPELINE A MATURAZIONE -->
+      <div class="conv-box cb-full">
+        <div class="conv-box-title"><span class="ct-dot" style="background:var(--or)"></span>Pipeline a Maturazione — Da seguire questa settimana</div>
+        <div style="font-size:12px;color:var(--g1);line-height:1.6;margin-bottom:10px">Questi lead sono ancora in finestra di conversione: hanno un appuntamento o sono stati ricontattati. Se seguiti nei prossimi 7 giorni, è probabile che si iscrivano.</div>
+        <div class="pipe-mat"><div class="pm-row">
+          <div class="pm-dot" style="background:#00a46a"></div>
+          <div class="pm-text"><strong>Silvia Adami</strong>Acquisita 3/4 → iscritta 13/4 in W2</div>
+          <div class="pm-days" style="color:var(--gn)">+10gg → iscritto</div>
+        </div><div class="pm-row">
+          <div class="pm-dot" style="background:#00a46a"></div>
+          <div class="pm-text"><strong>Roberta D'Onofrio</strong>Acquisita 4/4 → iscritta 14/4 in W2</div>
+          <div class="pm-days" style="color:var(--gn)">+10gg → iscritto</div>
+        </div><div class="pm-row">
+          <div class="pm-dot" style="background:#00a46a"></div>
+          <div class="pm-text"><strong>Alice Gandini</strong>Acquisita 3/4 → iscritta 8/4 in W2</div>
+          <div class="pm-days" style="color:var(--gn)">+5gg → iscritto</div>
+        </div><div class="pm-row">
+          <div class="pm-dot" style="background:#00a46a"></div>
+          <div class="pm-text"><strong>Silvia Tonolli</strong>Acquisita 5/4 → iscritta 12/4 in W2</div>
+          <div class="pm-days" style="color:var(--gn)">+7gg → iscritto</div>
+        </div><div class="pm-row">
+          <div class="pm-dot" style="background:#00a46a"></div>
+          <div class="pm-text"><strong>Federico Lungu</strong>Acquisita 7/4 → iscritta 10/4 in W2</div>
+          <div class="pm-days" style="color:var(--gn)">+3gg → iscritto</div>
+        </div></div>
+        <div class="alert ao" style="margin-top:10px"><div class="alert-l">💡 Insight</div>5 lead acquisiti in S1 si sono iscritti nella settimana successiva (S2). Confermano che la W1, nonostante le festività, ha generato valore reale nascosto.</div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- SEPARATORE -->
   <div class="separator">
     <div class="sep-line"></div>
@@ -350,7 +508,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
         </div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:2px"><a href="be-index.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:5px 12px;border:1px solid rgba(255,255,255,.15);border-radius:3px">← Dashboard</a></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:2px"><a href="report-index.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:5px 12px;border:1px solid rgba(255,255,255,.15);border-radius:3px">← Dashboard</a></div>
     <div class="footer-bottom">Settimana 1 · 1–7 Aprile 2026 · Mercoledì–Martedì</div>
   </div>
 </footer>
