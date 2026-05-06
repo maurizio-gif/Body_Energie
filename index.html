@@ -185,6 +185,44 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
 .nav-airtable{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:7px 16px;border-radius:3px;background:transparent;color:var(--or);border:2px solid var(--or);transition:background .15s,color .15s;white-space:nowrap;flex-shrink:0}
 .nav-airtable:hover{background:var(--or);color:#fff}
 @media(max-width:400px){.nav-airtable{font-size:11px;padding:5px 10px}}
+
+/* ── HAMBURGER MENU ── */
+.hbg-btn{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;flex-shrink:0}
+.hbg-btn span{display:block;width:22px;height:2px;background:var(--bk);border-radius:2px;transition:transform .25s,opacity .25s}
+.hbg-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg-btn.open span:nth-child(2){opacity:0}
+.hbg-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hbg-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:199;opacity:0;pointer-events:none;transition:opacity .25s}
+.hbg-overlay.open{opacity:1;pointer-events:auto}
+.hbg-panel{position:fixed;top:0;right:-320px;width:300px;max-width:90vw;height:100%;background:var(--wh);z-index:200;box-shadow:-4px 0 24px rgba(0,0,0,.15);transition:right .28s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.hbg-panel.open{right:0}
+.hbg-panel-head{background:var(--bk);padding:20px 20px 16px;display:flex;align-items:center;justify-content:space-between}
+.hbg-panel-head img{height:32px;filter:brightness(0) invert(1);opacity:.9}
+.hbg-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-size:22px;line-height:1;padding:4px 8px}
+.hbg-close:hover{color:#fff}
+.hbg-section{padding:16px 20px 8px}
+.hbg-section-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.hbg-section-label::after{content:'';flex:1;height:1px;background:var(--bd)}
+.hbg-link{display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:10px 14px;border-radius:5px;margin-bottom:4px;transition:background .15s}
+.hbg-link:hover{background:var(--bg)}
+.hbg-link-left{display:flex;align-items:center;gap:12px}
+.hbg-link-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;width:28px;line-height:1}
+.hbg-link-info{}
+.hbg-link-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--bk);line-height:1;margin-bottom:3px}
+.hbg-link-range{font-size:11px;color:var(--g2)}
+.hbg-link-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:3px}
+.hbg-tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:2px}
+.hbg-tag.tg{background:#e6f6ef;color:var(--gn)}.hbg-tag.tr{background:#fdeaea;color:var(--re)}.hbg-tag.ty{background:var(--or2);color:var(--or)}.hbg-tag.tn{background:var(--g4);color:var(--g2)}
+.hbg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hbg-dot.ok{background:#4eca8b}.hbg-dot.warn{background:#f6c343}.hbg-dot.bad{background:#f56565}
+.hbg-ext{display:flex;align-items:center;gap:10px}
+.hbg-external{display:flex;align-items:center;text-decoration:none;gap:10px;padding:12px 14px;border-radius:5px;border:1px solid var(--bd);margin:0 20px 8px}
+.hbg-external:hover{background:var(--bg)}
+.hbg-external img{height:22px;width:auto}
+.hbg-external-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--or)}
+.hbg-external-sub{font-size:11px;color:var(--g2)}
+.hbg-footer{margin-top:auto;padding:16px 20px;border-top:1px solid var(--bd);font-size:11px;color:var(--g3);line-height:1.5}
+
 </style>
 </head>
 <body>
@@ -194,6 +232,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
     <img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie">
   </div>
   <div class="nav-label">Dashboard Commerciale</div>
+  <button class="hbg-btn" id="hbgBtn" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   <a href="https://airtable.com/appmmcvVhWV8PNBOC/shr6jiHmGLw8mQlTT" target="_blank" class="nav-airtable">AIRTABLE</a>
 </nav>
 <div class="wnav">
@@ -212,11 +251,12 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
         <a href="be-w3.html" class="nwm-link">
           <span class="nwm-dot bad"></span>S3
         </a>
-        <!-- Aggiungi qui le settimane successive:
         <a href="be-w4.html" class="nwm-link">
-          <span class="nwm-dot upcoming"></span>S4
+          <span class="nwm-dot warn"></span>S4
         </a>
-        -->
+        <a href="be-w5.html" class="nwm-link">
+          <span class="nwm-dot warn"></span>S5
+        </a>
       </div>
     </div>
 
@@ -241,7 +281,7 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
   <div class="hero-tag">📊 Dashboard Riunioni Commerciali · Aprile 2026</div>
   <h1>REPORT<br>COMMERCIALE</h1>
   <div class="hero-sub">Monitoraggio settimanale dei contatti, delle conversioni e del lavoro del team. Schema Mercoledì–Martedì.</div>
-  <div class="hero-badge">Aggiornato al 21 Aprile 2026 · 3 settimane</div>
+  <div class="hero-badge">Aggiornato al 5 Maggio 2026 · 5 settimane</div>
 </div>
 
 <main>
@@ -346,6 +386,20 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
         <div class="wt-cell"><div class="wt-num" style="color:var(--re)">4</div><div class="wt-sub">app+prove</div><div class="delta d-dn">↓ -9</div></div>
         <div class="wt-cell"><div class="wt-num" style="color:var(--re)">56%</div><div class="wt-sub">assenti</div><div class="delta d-dn">↓ peggio</div></div>
       </div>
+      <div class="wt-row" style="background:rgba(26,111,212,.03)">
+        <div><div class="wt-label" style="color:#1a6fd4">S4</div><div class="wt-period">22–28 Apr 📈</div></div>
+        <div class="wt-cell"><div class="wt-num">27</div><div class="wt-sub">lead</div><div class="delta d-up">↑ +8%</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">1</div><div class="wt-sub">iscritti</div><div class="delta d-up">↑ torna</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--gn)">13</div><div class="wt-sub">app+prove</div><div class="delta d-up">↑ +9</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">48%</div><div class="wt-sub">assenti</div><div class="delta d-up">↑ meglio</div></div>
+      </div>
+      <div class="wt-row">
+        <div><div class="wt-label" style="color:#00875a">S5</div><div class="wt-period">29Apr–5Mag</div></div>
+        <div class="wt-cell"><div class="wt-num">21</div><div class="wt-sub">lead</div><div class="delta d-dn">↓ -22%</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">0</div><div class="wt-sub">iscritti</div><div class="delta d-dn">↓ zero</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--ye)">6</div><div class="wt-sub">app+prove</div><div class="delta d-dn">↓ -7</div></div>
+        <div class="wt-cell"><div class="wt-num" style="color:var(--re)">48%</div><div class="wt-sub">assenti</div><div class="delta d-eq">= stabile</div></div>
+      </div>
       <!-- MOBILE CARDS -->
       <div class="wt-mobile">
         <div class="wtm-card wc1">
@@ -384,6 +438,26 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
           </div>
           <div style="margin-top:10px"><a href="be-w3.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--re);text-decoration:none">Apri dettaglio →</a></div>
         </div>
+        <div class="wtm-card" style="border-left-color:#1a6fd4">
+          <div class="wtm-head"><div><div class="wtm-label" style="color:#1a6fd4">Settimana 4</div><div class="wtm-period">22–28 Aprile · Ripresa</div></div></div>
+          <div class="wtm-grid">
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Contatti</div><div class="wtm-kpi-val" style="color:var(--or)">27</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +8%</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Iscritti</div><div class="wtm-kpi-val" style="color:var(--gn)">1</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ torna positivo</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--gn)">13</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ +9</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--ye)">48%</div><div class="wtm-kpi-delta" style="color:var(--gn)">↑ migliora</div></div>
+          </div>
+          <div style="margin-top:10px"><a href="be-w4.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#1a6fd4;text-decoration:none">Apri dettaglio →</a></div>
+        </div>
+        <div class="wtm-card" style="border-left-color:#00875a">
+          <div class="wtm-head"><div><div class="wtm-label" style="color:#00875a">Settimana 5</div><div class="wtm-period">29 Apr–5 Mag · Primo Maggio</div></div></div>
+          <div class="wtm-grid">
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Contatti</div><div class="wtm-kpi-val" style="color:var(--or)">21</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ -22%</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Iscritti</div><div class="wtm-kpi-val" style="color:var(--re)">0</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ ancora 0</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Pipeline</div><div class="wtm-kpi-val" style="color:var(--ye)">6</div><div class="wtm-kpi-delta" style="color:var(--re)">↓ -7</div></div>
+            <div class="wtm-kpi"><div class="wtm-kpi-label">Note assenti</div><div class="wtm-kpi-val" style="color:var(--re)">48%</div><div class="wtm-kpi-delta" style="color:var(--g2)">=</div></div>
+          </div>
+          <div style="margin-top:10px"><a href="be-w5.html" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#00875a;text-decoration:none">Apri dettaglio →</a></div>
+        </div>
       </div>
     </div>
     <div class="alert ao" style="margin-top:8px">
@@ -414,6 +488,16 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
       <div class="tr-wrap"><div class="tr-bar" style="width:3%;background:var(--re)"><div class="tr-label"></div></div></div>
       <div class="tr-count" style="color:var(--re)">0</div>
     </div>
+    <div class="trend-row">
+      <div class="tr-week">S4</div>
+      <div class="tr-wrap"><div class="tr-bar" style="width:25%;background:#1a6fd4"><div class="tr-label">1 · ripresa</div></div></div>
+      <div class="tr-count" style="color:#1a6fd4">1</div>
+    </div>
+    <div class="trend-row">
+      <div class="tr-week">S5</div>
+      <div class="tr-wrap"><div class="tr-bar" style="width:3%;background:#00875a"><div class="tr-label"></div></div></div>
+      <div class="tr-count" style="color:var(--re)">0</div>
+    </div>
     <div style="border-top:1px solid var(--bd);padding-top:12px;margin-top:6px">
       <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Pipeline Attiva (App + Prove)</div>
       <div class="trend-row">
@@ -430,6 +514,16 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
         <div class="tr-week">S3</div>
         <div class="tr-wrap"><div class="tr-bar" style="width:30%;background:var(--ye)"><div class="tr-label">4</div></div></div>
         <div class="tr-count">4</div>
+      </div>
+      <div class="trend-row">
+        <div class="tr-week">S4</div>
+        <div class="tr-wrap"><div class="tr-bar" style="width:100%;background:#1a6fd4"><div class="tr-label">13 · picco massimo</div></div></div>
+        <div class="tr-count" style="color:#1a6fd4">13</div>
+      </div>
+      <div class="trend-row">
+        <div class="tr-week">S5</div>
+        <div class="tr-wrap"><div class="tr-bar" style="width:46%;background:#00875a"><div class="tr-label">6</div></div></div>
+        <div class="tr-count" style="color:var(--ye)">6</div>
       </div>
     </div>
   </div>
@@ -563,6 +657,18 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
         <div class="wn-meta"><span class="wt-tag tr">0 iscritti ⚠</span><span class="wt-tag ty">4 pipeline</span><span class="wt-tag">25 lead</span><span class="wt-tag tr">settimana normale</span></div></div>
         <div class="wn-arrow">›</div>
       </a>
+      <a href="be-w4.html" class="wn">
+        <div class="wn-num" style="color:#1a6fd4">S4</div>
+        <div style="flex:1"><div class="wn-title">Sett. 4 · 22–28 Aprile</div>
+        <div class="wn-meta"><span class="wt-tag tg">1 iscritto</span><span class="wt-tag tg">13 pipeline · ripresa</span><span class="wt-tag">27 lead</span></div></div>
+        <div class="wn-arrow">›</div>
+      </a>
+      <a href="be-w5.html" class="wn">
+        <div class="wn-num" style="color:#00875a">S5</div>
+        <div style="flex:1"><div class="wn-title">Sett. 5 · 29 Apr–5 Mag</div>
+        <div class="wn-meta"><span class="wt-tag tr">0 iscritti</span><span class="wt-tag ty">6 pipeline</span><span class="wt-tag">21 lead</span><span class="wt-tag tn">1° Maggio</span></div></div>
+        <div class="wn-arrow">›</div>
+      </a>
     </div>
   </div>
 
@@ -595,9 +701,122 @@ footer{background:var(--bk);color:rgba(255,255,255,.5);padding:20px 16px;margin-
         </div>
       </div>
     </div>
-    <div class="footer-bottom">Dashboard Commerciale · Aprile 2026 · Aggiornata al 21/04/2026 · Schema Mercoledì–Martedì</div>
+    <div class="footer-bottom">Dashboard Commerciale · Aprile 2026 · Aggiornata al 05/05/2026 · Schema Mercoledì–Martedì</div>
   </div>
 </footer>
+
+
+<!-- HAMBURGER OVERLAY + PANEL -->
+<div class="hbg-overlay" id="hbgOverlay" onclick="toggleMenu()"></div>
+<div class="hbg-panel" id="hbgPanel">
+  <div class="hbg-panel-head">
+    <img src="https://www.bodyenergie.it/wp-content/uploads/2026/01/Progetto-senza-titolo-e1768577514998.png" alt="Body Energie">
+    <button class="hbg-close" onclick="toggleMenu()">✕</button>
+  </div>
+
+  <!-- APRILE 2026 -->
+  <div class="hbg-section">
+    <div class="hbg-section-label">Aprile 2026</div>
+
+    <a href="be-w1.html" class="hbg-link">
+      <div class="hbg-link-left">
+        <div class="hbg-link-num" style="color:var(--or)">S1</div>
+        <div class="hbg-link-info">
+          <div class="hbg-link-title">1–7 Aprile</div>
+          <div class="hbg-link-range">Mercoledì – Martedì</div>
+          <div class="hbg-link-tags"><span class="hbg-tag tg">3 iscritti</span><span class="hbg-tag ty">5 pipeline</span><span class="hbg-tag tn">🐣 Pasqua</span></div>
+        </div>
+      </div>
+      <div class="hbg-ext"><div class="hbg-dot ok"></div></div>
+    </a>
+
+    <a href="be-w2.html" class="hbg-link">
+      <div class="hbg-link-left">
+        <div class="hbg-link-num" style="color:var(--gn)">S2</div>
+        <div class="hbg-link-info">
+          <div class="hbg-link-title">8–14 Aprile ★</div>
+          <div class="hbg-link-range">Mercoledì – Martedì</div>
+          <div class="hbg-link-tags"><span class="hbg-tag tg">4 iscritti</span><span class="hbg-tag ty">13 pipeline</span><span class="hbg-tag tg">Miglior sett.</span></div>
+        </div>
+      </div>
+      <div class="hbg-ext"><div class="hbg-dot ok"></div></div>
+    </a>
+
+    <a href="be-w3.html" class="hbg-link">
+      <div class="hbg-link-left">
+        <div class="hbg-link-num" style="color:var(--re)">S3</div>
+        <div class="hbg-link-info">
+          <div class="hbg-link-title">15–21 Aprile</div>
+          <div class="hbg-link-range">Mercoledì – Martedì</div>
+          <div class="hbg-link-tags"><span class="hbg-tag tr">0 iscritti ⚠</span><span class="hbg-tag ty">4 pipeline</span></div>
+        </div>
+      </div>
+      <div class="hbg-ext"><div class="hbg-dot bad"></div></div>
+    </a>
+
+    <a href="be-w4.html" class="hbg-link">
+      <div class="hbg-link-left">
+        <div class="hbg-link-num" style="color:#1a6fd4">S4</div>
+        <div class="hbg-link-info">
+          <div class="hbg-link-title">22–28 Aprile</div>
+          <div class="hbg-link-range">Mercoledì – Martedì</div>
+          <div class="hbg-link-tags"><span class="hbg-tag tg">1 iscritto</span><span class="hbg-tag tg">13 pipeline</span><span class="hbg-tag tn">Ripresa</span></div>
+        </div>
+      </div>
+      <div class="hbg-ext"><div class="hbg-dot warn"></div></div>
+    </a>
+
+    <a href="be-w5.html" class="hbg-link">
+      <div class="hbg-link-left">
+        <div class="hbg-link-num" style="color:#00875a">S5</div>
+        <div class="hbg-link-info">
+          <div class="hbg-link-title">29 Apr–5 Mag</div>
+          <div class="hbg-link-range">Mercoledì – Martedì</div>
+          <div class="hbg-link-tags"><span class="hbg-tag tr">0 iscritti</span><span class="hbg-tag ty">6 pipeline</span><span class="hbg-tag tn">Primo Maggio</span></div>
+        </div>
+      </div>
+      <div class="hbg-ext"><div class="hbg-dot warn"></div></div>
+    </a>
+
+    <!-- Aggiungi nuove settimane qui sotto seguendo lo stesso schema -->
+  </div>
+
+  <!-- ACCESSO DIRETTO -->
+  <div class="hbg-section">
+    <div class="hbg-section-label">Accesso Diretto</div>
+    <a href="https://airtable.com/appmmcvVhWV8PNBOC/shr6jiHmGLw8mQlTT" target="_blank" class="hbg-external">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Airtable_Logo.svg/2560px-Airtable_Logo.svg.png" alt="Airtable">
+      <div>
+        <div class="hbg-external-label">Airtable CRM</div>
+        <div class="hbg-external-sub">Apri il database lead</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="hbg-footer">
+    Report by Maurizio Taruggi · Ready 2 Digital<br>
+    Body Energie · Dashboard Commerciale
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hbgBtn');
+  const panel = document.getElementById('hbgPanel');
+  const overlay = document.getElementById('hbgOverlay');
+  const isOpen = panel.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  panel.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const panel = document.getElementById('hbgPanel');
+    if (panel.classList.contains('open')) toggleMenu();
+  }
+});
+</script>
 
 </body>
 </html>
